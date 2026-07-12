@@ -175,6 +175,7 @@ Default first-pass architecture: static HTML/CSS/JavaScript served by the Python
 
 Required outcomes:
 
+* the codebase must be fully portable and location-independent. All internal file operations must utilize relative paths derived from the project's root or runtime directory, rather than hardcoded absolute system paths.
 * browser-based GUI served by and communicating with a loopback-only backend;
 * default simple-first frontend: static HTML/CSS/JS served by the backend;
 * stable domain/application core and versioned API contract;
