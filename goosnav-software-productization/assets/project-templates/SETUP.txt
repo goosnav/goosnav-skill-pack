@@ -1,0 +1,46 @@
+{{PROJECT_NAME}} — SETUP
+
+STATUS
+------
+This file is initialized during M0. Replace placeholders as M1 establishes the real development and release process.
+
+DEVELOPER SETUP
+---------------
+1. Clone the repository.
+2. [TBD: install repository development prerequisites]
+3. [TBD: create safe developer configuration from .env.example]
+4. [TBD: install locked dependencies]
+5. [TBD: run migrations]
+6. [TBD: launch browser development mode]
+
+CANONICAL COMMANDS
+------------------
+Setup:
+Run:
+Format:
+Lint:
+Type check:
+Test:
+Integration:
+E2E:
+Build:
+Package:
+Smoke:
+
+END-USER LOCAL EDITION
+----------------------
+The release must not require Python, Node.js, pip, npm, Docker, or build tools. Document platform-specific install/launch and provider-key setup when M1 packaging is complete.
+
+CONFIGURATION AND SECRETS
+-------------------------
+- `.env` is for source development only and must not be committed.
+- Packaged local secrets use the operating-system credential store or encrypted application storage.
+- Hosted secrets use the deployment platform's secret manager.
+
+DATA, LOGS, AND SUPPORT
+-----------------------
+Data path:
+Workspace path:
+Log path:
+Support bundle:
+Backup/export:

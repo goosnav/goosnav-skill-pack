@@ -1,0 +1,43 @@
+{{PROJECT_NAME}} — NORTH STAR
+Last updated: {{DATE}}
+
+TARGET USER
+-----------
+[TBD: specific user and context]
+
+CORE JOB TO BE DONE
+-------------------
+[TBD: what the user is trying to accomplish]
+
+ONE-SENTENCE PRODUCT PROMISE
+----------------------------
+[TBD]
+
+PRIMARY HAPPY PATH
+------------------
+1. [TBD]
+2. [TBD]
+3. [TBD]
+
+EFFORTLESS MEANS
+----------------
+- [TBD: setup, time, decisions, reliability]
+
+FAILURE AND RECOVERY EXPERIENCE
+-------------------------------
+- [TBD: what users see and how they recover]
+
+QUALITY BAR
+-----------
+- [TBD: accuracy, latency, reliability, polish]
+
+COMMERCIAL OUTCOME
+------------------
+- M1 local edition:
+- M2 automation/community edition:
+- M3 subscription SaaS:
+- M4 mobile edition:
+
+NON-GOALS
+---------
+- [TBD]

@@ -1,0 +1,14 @@
+{{PROJECT_NAME}} — DECISION LOG
+
+DECISION-{{DATE_COMPACT}}-001: Adopt the Goosnav Software Productization Protocol
+STATUS: Accepted
+CONTEXT:
+The project requires a repeatable path from local software to automation, hosted SaaS, and mobile without premature cross-stage implementation.
+DECISION:
+Use GSPP milestone gates and a ports-and-adapters modular-monolith architecture.
+CONSEQUENCES:
+The complete path is planned, but only one milestone is implemented at a time. The user must accept each milestone before advancement.
+ALTERNATIVES REJECTED:
+Building all delivery surfaces simultaneously; unstructured prompt-by-prompt development.
+REVERSAL TRIGGER:
+A documented project constraint makes the protocol materially harmful or impossible.

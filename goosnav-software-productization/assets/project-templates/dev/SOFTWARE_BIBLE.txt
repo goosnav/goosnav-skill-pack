@@ -1,0 +1,48 @@
+{{PROJECT_NAME}} — SOFTWARE BIBLE
+Last updated: {{DATE}}
+
+PRODUCT SCOPE
+-------------
+[TBD]
+
+VOCABULARY AND ENTITIES
+-----------------------
+- [Term]: [definition]
+
+DURABLE PRODUCT RULES
+---------------------
+1. [TBD]
+
+PRIMARY WORKFLOWS
+-----------------
+1. [TBD]
+
+DATA AND PERSISTENCE RULES
+--------------------------
+- User data location:
+- Project/workspace structure:
+- Retention:
+- Import/export:
+- Migration behavior:
+
+CONFIGURATION AND SECRETS
+-------------------------
+- Local:
+- Hosted:
+
+PERMISSIONS AND ENTITLEMENTS
+----------------------------
+- [TBD]
+
+COMPATIBILITY PROMISE
+---------------------
+- Supported OS/platforms:
+- Supported file/API versions:
+
+ERROR AND RECOVERY RULES
+------------------------
+- [TBD]
+
+NON-GOALS
+---------
+- [TBD]

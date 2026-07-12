@@ -1,0 +1,20 @@
+PROTOCOL: GSPP
+PROTOCOL_VERSION: 1.0.0
+PROJECT_NAME: {{PROJECT_NAME}}
+PROJECT_SLUG: {{PROJECT_SLUG}}
+OWNER: {{OWNER}}
+CURRENT_MILESTONE: M0
+STATUS: ACTIVE
+LAST_USER_ACCEPTED_MILESTONE: NONE
+NEXT_ALLOWED_MILESTONE: M0
+CURRENT_SLICE: M0-S01
+LAST_UPDATED: {{DATE}}
+
+CURRENT_GATE:
+Complete the product contract, architecture, threat model, licensing decision, M1 acceptance criteria, and detailed M1 sprint plan.
+
+BLOCKERS:
+- None recorded.
+
+NEXT_USER_DECISION:
+- Approve M0 and authorize M1 after reviewing the completed project contract and M1 plan.

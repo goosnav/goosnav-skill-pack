@@ -1,0 +1,55 @@
+{{PROJECT_NAME}} — TEST PLAN
+Last updated: {{DATE}}
+
+QUALITY RISKS
+-------------
+1. [TBD]
+
+REQUIREMENT-TO-TEST MATRIX
+--------------------------
+REQ-ID | Requirement | Unit | Contract | Integration | E2E | Packaging | Manual Acceptance
+[TBD]
+
+M1 TESTS
+--------
+- Domain/application service unit tests
+- API contract tests
+- SQLite and filesystem integration
+- Browser primary-workflow E2E
+- Secret redaction and localhost security tests
+- Tauri/sidecar lifecycle tests
+- OS packaging and clean-machine smoke tests
+
+M2 TESTS
+--------
+- GUI/CLI parity
+- JSON schema and exit-code contracts
+- Noninteractive and idempotency behavior
+- TUI interaction/sizing if applicable
+
+M3 TESTS
+--------
+- Tenant isolation and authorization
+- Auth callback/session lifecycle
+- Billing webhook signature, replay, order, and failure states
+- Quota reservation/reconciliation and hard caps
+- Job retry/cancellation/idempotency
+- Backup restore and staged rollback
+
+M4 TESTS
+--------
+- Physical-device primary workflow
+- Auth/deep link/session lifecycle
+- Interruption/offline/retry/idempotency
+- Purchase/restore/account management
+- Accessibility and crash monitoring
+
+USER ACCEPTANCE FORMAT
+----------------------
+1. Launch:
+2. Primary workflow:
+3. Expected result:
+4. Restart/persistence:
+5. Failure/recovery:
+6. Logs/support:
+7. Approval phrase:

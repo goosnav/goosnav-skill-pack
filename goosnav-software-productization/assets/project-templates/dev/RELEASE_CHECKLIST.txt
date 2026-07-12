@@ -1,0 +1,57 @@
+{{PROJECT_NAME}} — RELEASE CHECKLIST
+Last updated: {{DATE}}
+
+RELEASE ID
+----------
+Version:
+Commit:
+Milestone:
+Candidate state:
+
+SOURCE AND BUILD
+----------------
+[ ] Clean git status or documented exceptions
+[ ] Lockfiles committed
+[ ] Reproducible build command documented
+[ ] CI matrix passed
+[ ] Dependency/license/security checks passed
+
+TESTS
+-----
+[ ] Unit
+[ ] Contract
+[ ] Integration
+[ ] End-to-end actual surface
+[ ] Failure/recovery
+[ ] Packaging/install/launch
+[ ] Migration/upgrade
+[ ] Manual acceptance
+
+SECURITY AND DATA
+-----------------
+[ ] No secrets in repo/artifacts/logs/support bundle
+[ ] User data paths verified
+[ ] Backup/export/recovery verified
+[ ] Threat model updated
+
+ARTIFACTS
+---------
+Artifact | Target | Size | SHA-256 | Signed/Notarized | Smoke Result
+[TBD]
+
+DOCUMENTATION
+-------------
+[ ] README/SETUP/tutorial current
+[ ] Known issues current
+[ ] License and attributions included
+[ ] Support/log locations documented
+
+ROLLBACK
+--------
+[TBD]
+
+USER ACCEPTANCE
+---------------
+Status: NOT_REQUESTED
+Date:
+Evidence/issues:

@@ -1,0 +1,7 @@
+Copyright (c) 2026 Goosnav LLC. All rights reserved.
+
+This skill package, including its instructions, scripts, templates, references, and accompanying materials, is proprietary to Goosnav LLC.
+
+Permission is granted to the lawful recipient to use and modify this package for internal development and for projects owned or authorized by that recipient. No permission is granted to sell, sublicense, republish, or distribute this package as a standalone product or competing development protocol without prior written permission from Goosnav LLC.
+
+This notice governs the skill package itself. Software projects created with the package require their own explicit license. This is a practical default notice, not a substitute for counsel-reviewed licensing terms when public distribution or commercial licensing is material.

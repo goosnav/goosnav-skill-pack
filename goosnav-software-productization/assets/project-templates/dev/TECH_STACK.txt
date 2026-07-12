@@ -1,0 +1,39 @@
+{{PROJECT_NAME}} — TECH STACK
+Last updated: {{DATE}}
+
+DEFAULT STACK
+-------------
+Python: 3.12+
+Python workspace: uv
+API: FastAPI + Pydantic
+Persistence: SQLAlchemy + Alembic; SQLite local, Postgres hosted
+Web: React + TypeScript + Vite
+UI: Tailwind CSS + owned source components
+API client: generated from OpenAPI
+Desktop: Tauri 2 + packaged Python sidecar
+CLI: Typer + Rich (M2)
+TUI: Textual when justified (M2)
+Hosted frontend: Vercel default (M3)
+Hosted API/workers: container host, Railway default (M3)
+Hosted data/auth/storage: Supabase (M3)
+Billing: Stripe (M3)
+Mobile: Expo/React Native (M4)
+
+TESTING
+-------
+Python: pytest, Ruff, static typing
+Web: Vitest, Playwright, ESLint/TypeScript
+Packaging: OS matrix + clean-machine smoke tests
+
+SUPPORTED TARGETS
+-----------------
+- [TBD]
+
+VERSION AND LOCKFILE POLICY
+---------------------------
+- Commit direct dependency manifests and lockfiles.
+- Pin release tooling and record build environments.
+
+APPROVED DEVIATIONS
+-------------------
+- None. Record deviations in dev/DECISIONS.txt.

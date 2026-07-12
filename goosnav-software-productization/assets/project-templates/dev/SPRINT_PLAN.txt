@@ -1,0 +1,47 @@
+{{PROJECT_NAME}} — ACTIVE SPRINT PLAN
+Last updated: {{DATE}}
+ACTIVE MILESTONE: M0
+STATUS: ACTIVE
+
+OBJECTIVE
+---------
+Produce a complete, internally consistent project contract and a detailed M1 plan without prematurely scaffolding later milestones.
+
+IN SCOPE
+--------
+- Complete North Star.
+- Complete software bible.
+- Define architecture and data boundaries.
+- Confirm/deviate from default stack.
+- Create threat model.
+- Select licensing model.
+- Write M1 acceptance test and vertical slices.
+
+NON-GOALS
+---------
+- Production application implementation.
+- SaaS deployment.
+- Mobile scaffolding.
+
+VERTICAL SLICES
+---------------
+[ ] M0-S01 Repository reconnaissance and existing-state inventory
+[ ] M0-S02 Product contract and explicit non-goals
+[ ] M0-S03 Architecture, data, secrets, and process lifecycle
+[ ] M0-S04 Threat model, licensing, and commercialization decisions
+[ ] M0-S05 Detailed M1 plan, test matrix, and acceptance procedure
+[ ] M0-S06 Consistency review and candidate-for-acceptance report
+
+VERIFICATION
+------------
+- No contradictions among NORTHSTAR, SOFTWARE_BIBLE, ARCHITECTURE, TECH_STACK, ROADMAP, TEST_PLAN, and THREAT_MODEL.
+- Every M1 requirement maps to a test or user acceptance step.
+- Future milestones remain coarse and unimplemented.
+
+ROLLBACK / RECOVERY
+-------------------
+Planning files are version-controlled. Revert or supersede decisions explicitly; do not silently erase rationale.
+
+EXIT GATE
+---------
+Set M0 to CANDIDATE_FOR_ACCEPTANCE and present the user with the product contract plus M1 acceptance criteria. Only the user may set M0 to USER_ACCEPTED.

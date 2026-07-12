@@ -1,0 +1,52 @@
+{{PROJECT_NAME}} — THREAT MODEL
+Last updated: {{DATE}}
+
+ASSETS
+------
+- User API keys and credentials
+- User projects and generated files
+- Local database/configuration
+- Hosted accounts, subscriptions, usage credits
+- Provider budget and infrastructure
+- Administrative controls
+
+ACTORS
+------
+- Legitimate user
+- Malicious local process or website
+- Malicious uploaded/imported content
+- Abusive trial/subscriber
+- External attacker
+- Compromised dependency/provider
+- Privileged administrator
+
+TRUST BOUNDARIES
+----------------
+- Browser <-> localhost API
+- Local application <-> filesystem/credential vault
+- Application <-> AI/external providers
+- Hosted client <-> API
+- API <-> database/storage/queue
+- Tenant <-> tenant
+- Admin <-> production controls
+- Mobile client <-> hosted API/store billing
+
+THREATS AND MITIGATIONS
+-----------------------
+THREAT | MILESTONE | MITIGATION | TEST | RESIDUAL RISK
+Secret leakage | M1 | OS vault, redaction, no .env in release | [TBD] | [TBD]
+Localhost cross-site abuse | M1 | loopback, origin/CSRF/session token | [TBD] | [TBD]
+Path traversal/malicious archive | M1 | canonical roots, safe extraction | [TBD] | [TBD]
+Provider cost abuse | M3 | auth, quotas, reservations, hard caps | [TBD] | [TBD]
+Cross-tenant access | M3 | RLS + app policy + tests | [TBD] | [TBD]
+Webhook forgery/replay | M3 | signature + idempotency | [TBD] | [TBD]
+Admin misuse | M3 | RBAC, MFA, audit log | [TBD] | [TBD]
+Mobile token theft | M4 | secure storage, short-lived tokens | [TBD] | [TBD]
+
+KILL SWITCHES
+-------------
+- Disable provider/model:
+- Disable costly workflow:
+- Global spend cap:
+- Maintenance mode:
+- Suspend tenant/user:

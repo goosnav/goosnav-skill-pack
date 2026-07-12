@@ -1,0 +1,64 @@
+{{PROJECT_NAME}} — ARCHITECTURE
+Last updated: {{DATE}}
+
+ARCHITECTURAL STYLE
+-------------------
+Modular monolith with ports and adapters. Shared domain/application services are independent of delivery surfaces and infrastructure providers.
+
+SYSTEM CONTEXT
+--------------
+[TBD: users, external systems, providers]
+
+COMPONENTS
+----------
+1. Domain/application core:
+2. Web UI:
+3. Local/hosted API:
+4. Persistence:
+5. Files/workspaces:
+6. Provider adapters:
+7. Desktop shell:
+8. Future CLI/TUI:
+9. Future hosted services:
+10. Future mobile client:
+
+DEPENDENCY DIRECTION
+--------------------
+Delivery adapters -> application services -> domain
+Infrastructure adapters implement ports owned by the core.
+
+PRIMARY DATA FLOW
+-----------------
+[TBD]
+
+PROCESS LIFECYCLE
+-----------------
+[TBD: local sidecar startup/health/shutdown]
+
+DATA LOCATIONS
+--------------
+Source repository:
+Application data:
+Secrets:
+User workspaces:
+Logs:
+Cache:
+Exports:
+
+TRUST BOUNDARIES
+----------------
+- Browser/local API:
+- Local app/provider API:
+- Hosted client/API:
+- Tenant/admin:
+
+FAILURE MODES AND RECOVERY
+--------------------------
+- [TBD]
+
+MILESTONE TOPOLOGY
+------------------
+M1 Local:
+M2 Automation:
+M3 Hosted:
+M4 Mobile:

@@ -1,0 +1,31 @@
+{{PROJECT_NAME}} — PRODUCTIZATION ROADMAP
+Last updated: {{DATE}}
+
+M0 — PRODUCT CONTRACT AND ARCHITECTURE
+STATUS: ACTIVE
+OUTCOME: Complete product definition, architecture, test strategy, threat model, licensing decision, and M1 plan.
+EXIT GATE: User accepts project contract and authorizes M1.
+
+M1 — LOCAL BROWSER + PACKAGED DESKTOP EDITION
+STATUS: NOT_STARTED
+OUTCOME: Dependable local product, self-contained releases, BYOK secrets, persistence, logs, tutorial, and cross-platform evidence.
+DEPENDENCIES: M0 accepted.
+EXIT GATE: User completes clean-install acceptance workflow and approves M1.
+
+M2 — CLI + OPTIONAL TUI AUTOMATION
+STATUS: NOT_STARTED
+OUTCOME: Stable noninteractive CLI and optional high-quality TUI using the same application services.
+DEPENDENCIES: M1 accepted and core boundaries stable.
+EXIT GATE: CLI parity, JSON/exit-code contract, user acceptance.
+
+M3 — HOSTED SUBSCRIPTION SAAS + COMMAND CENTER
+STATUS: NOT_STARTED
+OUTCOME: Multi-tenant hosted service with auth, billing, quotas, cost controls, jobs, observability, and owner operations.
+DEPENDENCIES: M1 accepted; M2 preferred when automation/API contracts help.
+EXIT GATE: Staging security/billing/cost/restore tests and user approval.
+
+M4 — IOS + ANDROID
+STATUS: NOT_STARTED
+OUTCOME: Store-compliant mobile clients consuming the hosted API.
+DEPENDENCIES: M3 accepted and stable mobile API/product workflow.
+EXIT GATE: Physical-device, TestFlight/closed-test, billing/account, and store-readiness acceptance.

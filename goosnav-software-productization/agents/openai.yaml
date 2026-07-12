@@ -1,0 +1,6 @@
+interface:
+  display_name: "Goosnav Software Productization"
+  short_description: "Build local, automation, SaaS, and mobile products through strict acceptance gates."
+  default_prompt: "Apply the Goosnav Software Productization Protocol to this repository. Inspect the current project state, establish the active milestone, update the plan, and implement only the next verified vertical slice."
+policy:
+  allow_implicit_invocation: true
