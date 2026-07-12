@@ -366,3 +366,81 @@ Load only what the current task requires:
 ## Explicit user overrides
 
 Follow a direct user override unless it creates a security flaw, corrupts data, or makes the requested acceptance claim false. Record substantial overrides in `dev/DECISIONS.txt`. Never use this protocol as an excuse to ignore a clear product requirement.
+
+
+### Private Development Files and Public Repository Hygiene
+
+Projects should use a simple separation between shippable repository content and private development material.
+
+Internal planning, agent instructions, software bibles, Northstar documents, sprint plans, implementation notes, architecture reasoning, prompts, and other development-only material should be stored inside one designated private development directory:
+
+```text
+dev/
+```
+
+or:
+
+```text
+dev-private/
+```
+
+The chosen directory must be excluded from Git by default.
+
+Top-level files intended primarily for AI coding agents must also be excluded unless the user explicitly decides to publish them. This normally includes:
+
+```text
+AGENTS.md
+CLAUDE.md
+CODEX.md
+GEMINI.md
+```
+
+Only files necessary to build, run, test, install, operate, or understand the customer-facing application should be committed to the main branch.
+
+The default `.gitignore` should include:
+
+```gitignore
+# Private development and agent material
+/dev/
+/dev-private/
+
+/AGENTS.md
+/CLAUDE.md
+/CODEX.md
+/GEMINI.md
+```
+
+The agent must ensure that excluding these files does not break:
+
+* application startup;
+* clean-clone installation;
+* packaging;
+* automated tests;
+* CI/CD;
+* database migrations;
+* deployment;
+* customer-facing documentation.
+
+Runtime code, build scripts, required configuration templates, migrations, schemas, tests, and release assets must not depend on ignored development documents.
+
+Before committing or pushing, the agent must check that development-only files are not staged:
+
+```bash
+git status
+git diff --cached --name-only
+```
+
+If a development file was previously committed, adding it to `.gitignore` is not sufficient. Remove it from Git tracking while preserving the local file:
+
+```bash
+git rm -r --cached dev dev-private 2>/dev/null || true
+git rm --cached AGENTS.md CLAUDE.md CODEX.md GEMINI.md 2>/dev/null || true
+```
+
+Do not fail when one or more of these paths do not exist.
+
+The `main` branch should remain customer-facing and contain only shippable application material and necessary public documentation.
+
+A development branch may contain private development files only when the user explicitly requests that workflow. Such a branch must not be merged wholesale into `main`. Before any merge, private paths must be excluded and the resulting main-branch file list must be inspected.
+
+Default behavior: ignore private development files entirely rather than maintaining them in a development branch.
