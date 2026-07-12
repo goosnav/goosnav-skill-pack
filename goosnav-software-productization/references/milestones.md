@@ -11,7 +11,7 @@
 - Data classification and retention assumptions.
 - Local/SaaS/mobile commercialization thesis.
 - Architecture context/component/data-flow diagrams.
-- M1 acceptance test written from the user's perspective.
+- M1a acceptance test written from the user's perspective.
 
 ### Gate evidence
 
@@ -21,25 +21,42 @@
 
 ## M1 — Local edition
 
-### Internal sub-stages
+M1 splits into M1a (Zip Edition, required and sellable) and M1b (Packaged Edition, a deferrable polish upgrade). After M1a is `USER_ACCEPTED`, the user chooses: build M1b now, or mark it `DEFERRED` and proceed to M2.
+
+### M1a Zip Edition — internal sub-stages
 
 1. Walking skeleton: browser UI -> local API -> persistence -> restart.
 2. Primary workflow: full user value, not placeholder screens.
 3. Reliability: migrations, errors, logs, recovery, tests.
-4. Configuration: settings, secure BYOK provider setup, validation, health checks.
+4. Configuration: settings, GUI-editable BYOK provider setup, validation, health checks.
 5. User projects: create/open/rename/archive/export with versioned manifests as applicable.
-6. Packaging: Tauri shell, sidecar, icons, installers/artifacts.
-7. Cross-platform release: CI matrix, clean-machine smoke tests, tutorial.
+6. Launchers and wizard: `start.command`/`start.sh`/`start.ps1`, iconed top-level launcher, idempotent first-run dependency wizard.
+7. Zip release: clean-machine smoke tests and a top-level tutorial covering API-key acquisition and setup.
 
-### Gate evidence
+### M1a gate evidence
 
 - `git clone` plus documented developer setup succeeds.
-- Packaged release launches with no preinstalled runtime.
-- Main workflow succeeds after install and after restart.
+- On a clean machine or clean user account: extract zip, double-click launcher, wizard completes with no manual steps, app opens in the browser.
+- Main workflow succeeds after first run and after restart.
+- Re-running the launcher after an interrupted wizard resumes cleanly.
 - Corrupt/missing configuration yields recoverable guidance.
 - Secrets do not appear in logs, repo, crash reports, or support bundle.
 - A user can locate, export, and back up their projects.
 - Version and migration behavior is documented.
+
+### M1b Packaged Edition — internal sub-stages
+
+1. Tauri shell, PyInstaller sidecar, health/handshake lifecycle.
+2. Icons, installers/artifacts per OS and architecture.
+3. Secrets migrated to the OS credential store or Tauri secure store.
+4. Cross-platform release: CI matrix, clean-machine smoke tests, signing/notarization where required.
+
+### M1b gate evidence
+
+- Packaged release launches with no preinstalled runtime and no wizard.
+- Main workflow succeeds after install and after restart.
+- Uninstall/removal is clean.
+- Build reproduces from source on CI.
 
 ## M2 — Automation edition
 

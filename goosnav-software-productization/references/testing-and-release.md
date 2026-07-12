@@ -27,7 +27,17 @@ Use the actual browser/desktop/mobile surface for primary workflows. Do not repl
 
 ### Packaging tests
 
-For each supported target:
+M1a Zip Edition, for each supported target on a clean machine, VM, or fresh user account:
+
+- extract the zip;
+- double-click the top-level launcher;
+- first-run wizard completes with no manual steps;
+- app opens in the browser and the primary workflow succeeds;
+- re-run after interrupting the wizard resumes cleanly;
+- restart preserves state;
+- log/config/data paths are correct.
+
+M1b Packaged Edition, for each supported target:
 
 - build from a clean CI runner;
 - install/extract;

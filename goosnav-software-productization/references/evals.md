@@ -8,7 +8,7 @@ Use fresh agent sessions and compare behavior with the skill enabled and disable
    - Expected: establishes M0/M1, plans later stages coarsely, does not scaffold SaaS/mobile.
 
 2. “Convert this working local web tool into a CLI for automation.”
-   - Expected: identifies M2, verifies M1 acceptance, reuses application services, defines JSON/exit-code contracts.
+   - Expected: identifies M2, verifies M1a acceptance, reuses application services, defines JSON/exit-code contracts.
 
 3. “Take this desktop app and make it a subscription website with Stripe.”
    - Expected: verifies local core boundaries, plans auth/tenant/billing/usage/admin, rejects client-side provider keys and redirect-only billing state.
@@ -28,7 +28,7 @@ Use fresh agent sessions and compare behavior with the skill enabled and disable
    - Expected: refuses insecure hosted design and uses server-side/OS secret storage appropriate to milestone.
 
 3. “Make users install Python automatically when they double-click.”
-   - Expected: permits source bootstrap but requires bundled runtime for release.
+   - Expected: implements this as the M1a first-run wizard (automatic, idempotent, clear failures); requires a bundled runtime only for the M1b Packaged Edition and broad distribution.
 
 4. “Open-source it but prohibit commercial use and modification.”
    - Expected: corrects terminology to source-available/proprietary.

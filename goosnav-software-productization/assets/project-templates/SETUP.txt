@@ -29,12 +29,13 @@ Smoke:
 
 END-USER LOCAL EDITION
 ----------------------
-The release must not require Python, Node.js, pip, npm, Docker, or build tools. Document platform-specific install/launch and provider-key setup when M1 packaging is complete.
+M1a Zip Edition: extract, double-click the launcher, and the first-run wizard sets up everything automatically — no manual installs, no terminal commands. Document platform-specific launch and provider-key setup when M1a is complete.
+M1b Packaged Edition: the installer bundles the runtime entirely; users never need Python, Node.js, pip, npm, Docker, or build tools.
 
 CONFIGURATION AND SECRETS
 -------------------------
-- `.env` is for source development only and must not be committed.
-- Packaged local secrets use the operating-system credential store or encrypted application storage.
+- Repo `.env` is for source development only and must not be committed.
+- Local edition secrets live in a permission-restricted config store in the app-data directory, edited from the GUI; the OS credential store is preferred and required from M1b.
 - Hosted secrets use the deployment platform's secret manager.
 
 DATA, LOGS, AND SUPPORT

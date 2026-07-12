@@ -2,12 +2,14 @@
 
 ## Local secrets
 
-The GUI may collect a user-supplied API key, but persistence must use a secret-storage adapter:
+The GUI may collect a user-supplied API key, and settings edits persist automatically. Persistence goes through a secret-storage adapter with these backends:
 
-1. operating-system credential vault/keychain where available;
-2. encrypted application store protected by OS user permissions when a vault is unavailable;
+1. Zip Edition default: a permission-restricted config file (or `.env`) in the platform app-data directory — owner-only file permissions, never inside the repository, GUI-editable;
+2. preferred upgrade, required from M1b packaging onward: operating-system credential vault/keychain, or an encrypted application store when a vault is unavailable;
 3. environment variable for ephemeral automation;
-4. `.env` only for developer/source mode.
+4. repository `.env` only for developer/source mode.
+
+Because storage is behind an adapter, upgrading from config file to keychain is a backend swap plus a one-time migration, not a rewrite.
 
 Never display a stored secret after save. Provide replace, test, and delete actions. Redact secrets and likely token patterns from logs and support bundles.
 

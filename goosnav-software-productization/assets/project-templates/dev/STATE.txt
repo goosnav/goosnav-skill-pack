@@ -11,10 +11,10 @@ CURRENT_SLICE: M0-S01
 LAST_UPDATED: {{DATE}}
 
 CURRENT_GATE:
-Complete the product contract, architecture, threat model, licensing decision, M1 acceptance criteria, and detailed M1 sprint plan.
+Complete the product contract, architecture, threat model, licensing decision, M1a acceptance criteria, and detailed M1a sprint plan.
 
 BLOCKERS:
 - None recorded.
 
 NEXT_USER_DECISION:
-- Approve M0 and authorize M1 after reviewing the completed project contract and M1 plan.
+- Approve M0 and authorize M1a after reviewing the completed project contract and M1a plan.

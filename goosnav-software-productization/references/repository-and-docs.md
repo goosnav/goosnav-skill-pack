@@ -27,7 +27,7 @@ Create directories only when their milestone begins; do not fill the repository 
 │   └── RELEASE_CHECKLIST.txt
 ├── apps/
 │   ├── web/               # M1/M3 product client
-│   ├── desktop/           # M1 Tauri shell
+│   ├── desktop/           # M1b Tauri shell
 │   ├── admin/             # M3 owner command center
 │   └── mobile/            # M4 Expo application
 ├── services/
@@ -153,7 +153,7 @@ Map requirements and risks to unit, contract, integration, end-to-end, packaging
 
 ### THREAT_MODEL.txt
 
-Track assets, actors, entry points, trust boundaries, misuse/abuse cases, mitigations, residual risk, and security tests. Update materially at M1 packaging, M2 automation, M3 multi-tenancy/billing, and M4 mobile.
+Track assets, actors, entry points, trust boundaries, misuse/abuse cases, mitigations, residual risk, and security tests. Update materially at M1a release, M1b packaging, M2 automation, M3 multi-tenancy/billing, and M4 mobile.
 
 ### RELEASE_CHECKLIST.txt
 

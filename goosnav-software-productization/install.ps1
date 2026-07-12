@@ -31,6 +31,7 @@ function Copy-Skill([string]$DestinationRoot) {
 
 if ($Scope -eq "User") {
     Copy-Skill (Join-Path $HOME ".claude\skills")
+    Copy-Skill (Join-Path $HOME ".codex\skills")
     Copy-Skill (Join-Path $HOME ".agents\skills")
     Write-Host "Claude Code: /$SkillName"
     Write-Host "Codex:       `$$SkillName"
@@ -40,6 +41,7 @@ if ($Scope -eq "User") {
     }
     $Resolved = (Resolve-Path $RepoPath).Path
     Copy-Skill (Join-Path $Resolved ".claude\skills")
+    Copy-Skill (Join-Path $Resolved ".codex\skills")
     Copy-Skill (Join-Path $Resolved ".agents\skills")
     Write-Host "Installed repository-scoped copies in: $Resolved"
 }

@@ -34,7 +34,7 @@ TRUST BOUNDARIES
 THREATS AND MITIGATIONS
 -----------------------
 THREAT | MILESTONE | MITIGATION | TEST | RESIDUAL RISK
-Secret leakage | M1 | OS vault, redaction, no .env in release | [TBD] | [TBD]
+Secret leakage | M1 | restricted app-data config or OS vault, redaction, no secrets in repo | [TBD] | [TBD]
 Localhost cross-site abuse | M1 | loopback, origin/CSRF/session token | [TBD] | [TBD]
 Path traversal/malicious archive | M1 | canonical roots, safe extraction | [TBD] | [TBD]
 Provider cost abuse | M3 | auth, quotas, reservations, hard caps | [TBD] | [TBD]

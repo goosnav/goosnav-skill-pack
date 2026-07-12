@@ -28,8 +28,8 @@ Universal shippability does **not** mean forcing one executable or one framework
 
 1. **Never jump milestones.** Future work may be documented, modeled, or represented by interfaces. Do not deploy, scaffold extensively, or implement future-stage features before the active gate passes.
 2. **Do not duplicate business logic across interfaces.** GUI, CLI, TUI, hosted API, admin console, and mobile must call the same application services or stable API contracts.
-3. **Do not make users install runtimes.** Source-development scripts may install developer dependencies. Release artifacts must bundle the runtime and application dependencies. End users must not need Python, Node.js, pip, npm, Docker, or a compiler.
-4. **Treat `.env` as development configuration, not a production secret vault.** Never commit it. Local release secrets belong in the operating-system credential store or an encrypted application store. Hosted secrets belong in the deployment platform's secret manager.
+3. **Never make users perform manual environment setup.** The M1a Zip Edition may bootstrap Python, a virtual environment, and locked dependencies through its first-run wizard, but the wizard must be fully automatic, resumable, and produce clear guidance on failure — the user double-clicks and waits. The M1b Packaged Edition and any broadly distributed release must bundle the runtime and dependencies so end users never need Python, Node.js, pip, npm, Docker, or a compiler.
+4. **Keep secrets out of the repository, always.** Never commit `.env` or any credential. For the local edition, a GUI-editable, permission-restricted config file (or `.env`) in the platform app-data directory is acceptable for the user's own BYOK keys; the operating-system credential store is the preferred upgrade, required from M1b packaging onward. Hosted secrets belong exclusively in the deployment platform's secret manager.
 5. **Keep user data outside the repository.** Use platform application-data directories or a user-selected workspace. Never mix generated projects, logs, databases, caches, uploads, or exports with source code by default.
 6. **Bind local services to loopback only.** Default to `127.0.0.1`, not `0.0.0.0`. Use a non-conflicting port and protect local privileged endpoints against cross-origin and cross-site request abuse.
 7. **No false cross-platform claims.** “Supports Windows/macOS/Linux” requires actual builds and smoke tests on those operating systems, normally through a CI matrix plus at least one clean-machine manual test per release family.
@@ -109,7 +109,7 @@ Do not write a giant speculative implementation plan for all four commercial sta
 
 ## Default architecture
 
-Use the defaults in `references/default-stack.md` unless a documented constraint requires a deviation.
+Use the defaults in `references/default-stack.md` unless a documented constraint requires a deviation. The frontend is simple-first: plain HTML/CSS/JS served by the backend by default, with React/Vite reserved for genuinely complex UIs and recorded as a decision.
 
 The invariant shape is:
 
@@ -154,7 +154,7 @@ Required outputs:
 - architecture and data boundaries;
 - default stack or approved deviations;
 - complete milestone roadmap;
-- detailed M1 sprint plan;
+- detailed M1a sprint plan;
 - acceptance criteria and test matrix;
 - initial threat model and licensing decision;
 - repository and branching strategy.
@@ -163,27 +163,65 @@ M0 exit gate: the project can be explained as a system, the first sellable local
 
 Read `references/repository-and-docs.md` and `references/decision-rules.md`.
 
-### M1 — Local browser application and packaged desktop edition
+### M1 — Local browser application: Zip Edition, then optional Packaged Edition
 
-Purpose: create a dependable, commercially shippable local product.
+Purpose: create a dependable, commercially shippable local product with the fastest possible path to the first sale.
+
+M1 has two sellable sub-editions. M1a is the first revenue gate; M1b is a polish upgrade the user may accept immediately, defer, or skip.
+
+#### M1a — Zip Edition (required, sellable)
+
+Default first-pass architecture: static HTML/CSS/JavaScript served by the Python backend. Do not introduce React, Vite, Node.js, a desktop shell, or another frontend build system unless the escalation conditions in `references/default-stack.md` are met and recorded in `dev/DECISIONS.txt`.
 
 Required outcomes:
 
-- browser-based GUI running against a loopback backend in development;
-- stable domain/application core and API contract;
-- persistent local projects and settings outside the repo;
-- SQLite or equivalent local persistence with migrations and recovery;
-- secure local API-key storage and redacted logs;
-- import/export and support-bundle behavior where applicable;
-- source-mode launchers for macOS/Linux/Windows;
-- self-contained packaged desktop launchers/installers with professional icons;
-- no runtime installation required for end users;
-- clean clone setup for developers;
-- user tutorial, troubleshooting guide, and release checklist.
+* browser-based GUI served by and communicating with a loopback-only backend;
+* default simple-first frontend: static HTML/CSS/JS served by the backend;
+* stable domain/application core and versioned API contract;
+* persistent local projects, settings, database, logs, and exports outside the repository;
+* SQLite or equivalent local persistence with migrations, backups, integrity checks, and documented recovery;
+* GUI-editable API-key storage in an application-data configuration or secret store, never committed, never returned to the browser after save, and always redacted from logs and support bundles;
+* import/export and sanitized support-bundle behavior where applicable;
+* launchers `start.command` for macOS, `start.sh` for macOS/Linux, and `start.ps1` for Windows, plus an optional `.bat` compatibility wrapper;
+* a top-level double-clickable launcher with a professional icon that routes to the same startup controller;
+* a first-run wizard that verifies or obtains a supported Python runtime when permitted, creates the virtual environment, installs exact locked dependencies, initializes or migrates storage, launches the server, and opens the browser without requiring terminal interaction;
+* an idempotent startup flow that is safe to rerun after success, partial installation, failed installation, interrupted migration, stale lock files, stale PID files, or a prior crash;
+* a resilient localhost startup controller satisfying the Local Server Runtime Contract;
+* clean-clone setup for developers;
+* a top-level user tutorial, exact API-key acquisition instructions, troubleshooting guide, privacy and data-location guide, and release checklist.
 
-Default packaging: a Tauri desktop shell around the web UI, with the Python/FastAPI backend bundled as a per-platform sidecar executable. Browser-only launch remains available for development and when explicitly useful.
+**Local Server Runtime Contract:**
 
-M1 exit gate: install or extract on clean target systems, launch by double-click, complete the primary workflow, restart without losing state, inspect logs, uninstall or remove cleanly, and reproduce the build from source.
+1. Bind only to an explicit loopback address: `127.0.0.1` by default and optionally `::1` when tested. Never bind M1a to `0.0.0.0` by default.
+2. Treat the configured port as a preference, not an assumption. Attempt it first. When unavailable, automatically select another free loopback port from a bounded configurable range or use an operating-system-assigned ephemeral port.
+3. Resolve port selection and bind the listening socket without a check-then-bind race. Prefer passing a pre-bound socket to the server or retrying atomic bind failures. Never merely probe a port, release it, and assume it remains available.
+4. Persist the effective host, port, process ID, start time, application version, and per-launch random session identifier in an application-data runtime-state file using atomic writes. Do not store this state in the repository.
+5. Detect a healthy existing instance before starting another. Reuse it and open its URL when versions and workspaces are compatible. Otherwise explain the conflict and provide a safe recovery path. Never terminate an unrelated process merely because it occupies the preferred port.
+6. Start the browser only after the health endpoint reports ready and all mandatory migrations and startup checks have passed. Use a bounded timeout, visible progress, and an actionable failure screen or message when readiness is not reached.
+7. If startup fails, shut down partially started children, release locks and sockets, preserve diagnostic logs, and return a nonzero exit code. Do not leave zombie processes or report success.
+8. Handle `SIGINT`, `SIGTERM`, console-close events, parent-process exit, and normal GUI shutdown. Stop accepting work, allow bounded completion or cancellation, flush logs and database writes, close resources, and terminate children. Force-kill only after the documented grace period expires.
+9. Install global exception handlers for the startup controller, HTTP server, background tasks, and worker threads or processes. Convert expected failures into stable user-facing error codes. Log unexpected failures with a correlation ID and sanitized traceback.
+10. Provide `/health/live` and `/health/ready`, or equivalent endpoints. Liveness confirms the process loop. Readiness confirms migrations, required storage, configuration, and core dependencies are usable. Neither endpoint may expose secrets.
+11. Generate the browser URL from the actual bound address and effective port. Never hardcode `localhost:PORT` in the frontend, launcher, tests, or documentation.
+12. Protect local state-changing endpoints with same-origin enforcement and a per-launch unguessable session token or equivalent local authorization mechanism. Restrictive CORS alone is insufficient.
+13. Log the preferred port, effective port, fallback reason, startup duration, readiness result, shutdown reason, and crash identifier. Never log API keys, authorization headers, session tokens, or sensitive request bodies.
+14. Test at minimum: preferred port free; preferred port occupied by this application; preferred port occupied by an unrelated process; multiple consecutive occupied ports; simultaneous double-launch; stale runtime metadata; interrupted setup; failed migration; browser-open failure; graceful shutdown during active work; forced shutdown after timeout; and restart with preserved state.
+
+M1a exit gate: on a clean supported machine or clean user account, extract the zip, double-click the launcher, watch setup complete unattended, verify automatic port fallback while the preferred port is occupied, complete the primary workflow, restart without losing state, locate logs and user data, export a sanitized support bundle, and recover cleanly from one intentionally induced startup failure. Release evidence must include the actual commands, tests, and resulting logs rather than a prose assertion.
+
+
+#### M1b — Packaged Edition (recommended upgrade, deferrable)
+
+Required outcomes:
+
+- Tauri desktop shell around the same web UI, with the Python/FastAPI backend bundled as a per-platform sidecar executable;
+- self-contained installers/artifacts with professional icons per OS;
+- no runtime installation or wizard required for end users;
+- secrets migrated to the OS credential store or Tauri secure store.
+
+M1b exit gate: install on clean target systems, launch by double-click, complete the primary workflow, restart without losing state, uninstall or remove cleanly, and reproduce the build from source.
+
+After M1a is `USER_ACCEPTED`, ask the user whether to build M1b now or mark it `DEFERRED` and proceed to M2. Broad public distribution should use M1b.
 
 Read `references/milestones.md`, `references/security-and-data.md`, and `references/testing-and-release.md`.
 
@@ -298,7 +336,7 @@ When the active milestone reaches `CANDIDATE_FOR_ACCEPTANCE`, stop implementatio
 
 ## Gotchas
 
-- A `.command`, `.sh`, or `.ps1` launcher is a source-mode convenience, not a polished cross-platform release.
+- A `.command`, `.sh`, or `.ps1` launcher plus first-run wizard is a legitimate M1a release format, but it is not a substitute for the M1b packaged edition when distributing broadly or to non-technical buyers.
 - An `.ico` file is only an icon asset; Windows applications are `.exe`/`.msi`/MSIX, macOS applications are signed `.app` bundles commonly distributed in `.dmg`/`.pkg`, and Linux releases use formats such as AppImage, `.deb`, or `.rpm`.
 - GitHub Pages serves static content and cannot host a Python API, background workers, protected secrets, or subscription webhooks.
 - Vercel is suitable for frontend and selected serverless work, but long-running Python/AI jobs need an appropriate API/worker runtime.

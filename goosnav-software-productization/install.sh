@@ -26,6 +26,7 @@ copy_skill() {
 case "$MODE" in
   --user)
     copy_skill "$HOME/.claude/skills"
+    copy_skill "$HOME/.codex/skills"
     copy_skill "$HOME/.agents/skills"
     echo "Claude Code: /$SKILL_NAME"
     echo "Codex:       \$$SKILL_NAME"
@@ -37,6 +38,7 @@ case "$MODE" in
     fi
     REPO_PATH="$(cd "$REPO_PATH" && pwd)"
     copy_skill "$REPO_PATH/.claude/skills"
+    copy_skill "$REPO_PATH/.codex/skills"
     copy_skill "$REPO_PATH/.agents/skills"
     echo "Installed repository-scoped copies in: $REPO_PATH"
     ;;

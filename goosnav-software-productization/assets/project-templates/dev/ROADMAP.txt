@@ -6,22 +6,28 @@ STATUS: ACTIVE
 OUTCOME: Complete product definition, architecture, test strategy, threat model, licensing decision, and M1 plan.
 EXIT GATE: User accepts project contract and authorizes M1.
 
-M1 — LOCAL BROWSER + PACKAGED DESKTOP EDITION
+M1a — LOCAL BROWSER APPLICATION, ZIP EDITION
 STATUS: NOT_STARTED
-OUTCOME: Dependable local product, self-contained releases, BYOK secrets, persistence, logs, tutorial, and cross-platform evidence.
+OUTCOME: Dependable, sellable local product: zip release with iconed launcher, automatic first-run wizard, BYOK secrets, persistence, logs, and top-level tutorial.
 DEPENDENCIES: M0 accepted.
-EXIT GATE: User completes clean-install acceptance workflow and approves M1.
+EXIT GATE: User completes clean-machine zip acceptance workflow and approves M1a.
+
+M1b — PACKAGED DESKTOP EDITION (DEFERRABLE)
+STATUS: NOT_STARTED
+OUTCOME: Tauri-packaged self-contained installers with bundled runtime, OS-keychain secrets, and cross-platform release evidence.
+DEPENDENCIES: M1a accepted. May be DEFERRED in favor of M2 and revisited before broad distribution.
+EXIT GATE: User completes clean-install acceptance workflow and approves M1b.
 
 M2 — CLI + OPTIONAL TUI AUTOMATION
 STATUS: NOT_STARTED
 OUTCOME: Stable noninteractive CLI and optional high-quality TUI using the same application services.
-DEPENDENCIES: M1 accepted and core boundaries stable.
+DEPENDENCIES: M1a accepted and core boundaries stable.
 EXIT GATE: CLI parity, JSON/exit-code contract, user acceptance.
 
 M3 — HOSTED SUBSCRIPTION SAAS + COMMAND CENTER
 STATUS: NOT_STARTED
 OUTCOME: Multi-tenant hosted service with auth, billing, quotas, cost controls, jobs, observability, and owner operations.
-DEPENDENCIES: M1 accepted; M2 preferred when automation/API contracts help.
+DEPENDENCIES: M1a accepted; M2 preferred when automation/API contracts help.
 EXIT GATE: Staging security/billing/cost/restore tests and user approval.
 
 M4 — IOS + ANDROID
