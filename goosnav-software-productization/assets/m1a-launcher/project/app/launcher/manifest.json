@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "app_id": "com.example.product-name",
+  "display_name": "Product Name",
+  "python": "3.12.10",
+  "entry_module": "product_name.start",
+  "ready_path": "/health/ready",
+  "startup_timeout_seconds": 180,
+  "preferred_port": 0,
+  "data_directory_name": "ProductName"
+}

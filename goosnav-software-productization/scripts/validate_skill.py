@@ -20,6 +20,7 @@ REQUIRED_REFS = {
     "references/licensing.md",
     "references/decision-rules.md",
     "references/evals.md",
+    "references/zip-app-architecture.md",
 }
 
 
@@ -81,6 +82,30 @@ def main() -> int:
     for script in ("scripts/init_project.py", "scripts/validate_skill.py"):
         if not (root / script).is_file():
             errors.append(f"missing script: {script}")
+
+    for asset in (
+        "assets/m1a-launcher/supervisor/main.go",
+        "assets/m1a-launcher/project/app/launcher/bootstrap.py",
+        "assets/m1a-launcher/project/app/launcher/manifest.json",
+        "assets/m1a-launcher/project/app/launcher/checksums.sha256",
+        "assets/m1a-launcher/project/app/pyproject.toml",
+        "assets/m1a-launcher/project/app/uv.lock",
+        "assets/m1a-launcher/project/app/.python-version",
+        "assets/m1a-launcher/project/app/src/.keep",
+        "assets/m1a-launcher/project/app/static/.keep",
+        "assets/m1a-launcher/project/app/launcher/tools/macos-x64/.keep",
+        "assets/m1a-launcher/project/app/launcher/tools/macos-arm64/.keep",
+        "assets/m1a-launcher/project/app/launcher/tools/windows-x64/.keep",
+        "assets/m1a-launcher/project/app/launcher/tools/windows-arm64/.keep",
+        "assets/m1a-launcher/project/app/launcher/tools/linux-x64/.keep",
+        "assets/m1a-launcher/project/app/launcher/tools/linux-arm64/.keep",
+        "assets/m1a-launcher/build.py",
+        "assets/m1a-launcher/fetch_uv.py",
+        "assets/m1a-launcher/package_universal.py",
+        "assets/m1a-launcher/release-matrix.json",
+    ):
+        if not (root / asset).is_file():
+            errors.append(f"missing launcher asset: {asset}")
 
     print(f"Skill root: {root}")
     for warning in warnings:

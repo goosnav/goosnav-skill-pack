@@ -1,0 +1,3 @@
+Copyright (c) {{DATE}} {{OWNER}}. All rights reserved.
+
+Replace this placeholder with the product's actual distribution license before release.

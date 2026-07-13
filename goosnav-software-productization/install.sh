@@ -11,7 +11,7 @@ copy_skill() {
   local destination="$destination_root/$SKILL_NAME"
   mkdir -p "$destination_root"
   if [[ "$(cd "$(dirname "$destination")" && pwd)/$(basename "$destination")" == "$SOURCE_DIR" ]]; then
-    echo "Already installed: $destination"
+    echo "Already canonical: $destination"
     return
   fi
   local staging
@@ -23,13 +23,23 @@ copy_skill() {
   echo "Installed: $destination"
 }
 
+remove_legacy() {
+  local destination="$1/$SKILL_NAME"
+  [[ -e "$destination" ]] || return 0
+  if [[ "$(cd "$(dirname "$destination")" && pwd)/$(basename "$destination")" == "$SOURCE_DIR" ]]; then
+    echo "Legacy source copy retained while installer is running: $destination"
+    return
+  fi
+  rm -rf "$destination"
+  echo "Removed duplicate: $destination"
+}
+
 case "$MODE" in
   --user)
-    copy_skill "$HOME/.claude/skills"
-    copy_skill "$HOME/.codex/skills"
     copy_skill "$HOME/.agents/skills"
-    echo "Claude Code: /$SKILL_NAME"
-    echo "Codex:       \$$SKILL_NAME"
+    remove_legacy "$HOME/.codex/skills"
+    remove_legacy "$HOME/.claude/skills"
+    echo "Canonical Agent Skill: $HOME/.agents/skills/$SKILL_NAME"
     ;;
   --repo)
     if [[ -z "$REPO_PATH" ]]; then
@@ -37,10 +47,10 @@ case "$MODE" in
       exit 2
     fi
     REPO_PATH="$(cd "$REPO_PATH" && pwd)"
-    copy_skill "$REPO_PATH/.claude/skills"
-    copy_skill "$REPO_PATH/.codex/skills"
     copy_skill "$REPO_PATH/.agents/skills"
-    echo "Installed repository-scoped copies in: $REPO_PATH"
+    remove_legacy "$REPO_PATH/.codex/skills"
+    remove_legacy "$REPO_PATH/.claude/skills"
+    echo "Canonical repository skill: $REPO_PATH/.agents/skills/$SKILL_NAME"
     ;;
   *)
     echo "Usage: $0 --user | --repo /path/to/repository" >&2

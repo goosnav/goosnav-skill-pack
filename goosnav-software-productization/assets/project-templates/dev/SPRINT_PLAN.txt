@@ -1,47 +1,44 @@
 {{PROJECT_NAME}} — ACTIVE SPRINT PLAN
 Last updated: {{DATE}}
-ACTIVE MILESTONE: M0
+ACTIVE MILESTONE: M1a
 STATUS: ACTIVE
 
 OBJECTIVE
 ---------
-Produce a complete, internally consistent project contract and a detailed M1a plan without prematurely scaffolding later milestones.
+Ship one universal ZIP that a customer can extract and launch into the working browser GUI on every claimed OS/architecture without developer tooling.
 
 IN SCOPE
 --------
-- Complete North Star.
-- Complete software bible.
-- Define architecture and data boundaries.
-- Confirm/deviate from default stack.
-- Create threat model.
-- Select licensing model.
-- Write M1a acceptance test and vertical slices.
+- Preserve and verify the primary GUI workflow.
+- Place mutable product material beneath `app/`.
+- Implement the manifest/bootstrap contract and external application-data paths.
+- Generate the five stable launcher images.
+- Bundle pinned `uv`; lock exact binary dependencies for the full matrix.
+- Implement visible setup, readiness redirect, supervision, and stable exception codes.
+- Assemble and test the explicit-whitelist universal ZIP.
 
 NON-GOALS
 ---------
-- Production application implementation.
-- SaaS deployment.
-- Mobile scaffolding.
+- DRM, activation, login, or copy prevention.
+- Signing, installers, fully offline runtime, or automatic updates.
+- CLI/TUI, SaaS, hub, storefront, or mobile implementation.
 
 VERTICAL SLICES
 ---------------
-[ ] M0-S01 Repository reconnaissance and existing-state inventory
-[ ] M0-S02 Product contract and explicit non-goals
-[ ] M0-S03 Architecture, data, secrets, and process lifecycle
-[ ] M0-S04 Threat model, licensing, and commercialization decisions
-[ ] M0-S05 Detailed M1a plan, test matrix, and acceptance procedure
-[ ] M0-S06 Consistency review and candidate-for-acceptance report
+[ ] M1a-S01 Repository reconnaissance, GUI launch path, and acceptance contract
+[ ] M1a-S02 Customer root and mutable `app/` layout
+[ ] M1a-S03 Manifest, bootstrap, loopback readiness, and external data paths
+[ ] M1a-S04 Stable launcher images and bundled `uv` tools
+[ ] M1a-S05 Versioned runtime, setup UI, retries, errors, and supervision
+[ ] M1a-S06 Universal ZIP assembly and full target/failure matrix
+[ ] M1a-S07 Candidate-for-acceptance evidence
 
 VERIFICATION
 ------------
-- No contradictions among NORTHSTAR, SOFTWARE_BIBLE, ARCHITECTURE, TECH_STACK, ROADMAP, TEST_PLAN, and THREAT_MODEL.
-- Every M1a requirement maps to a test or user acceptance step.
-- Future milestones remain coarse and unimplemented.
-
-ROLLBACK / RECOVERY
--------------------
-Planning files are version-controlled. Revert or supersede decisions explicitly; do not silently erase rationale.
+- Run every scenario in `references/zip-app-architecture.md` or its copied project acceptance contract.
+- Confirm application-only changes leave all launcher-image hashes unchanged.
+- Confirm private `dev/` and agent files are ignored and absent from the ZIP.
 
 EXIT GATE
 ---------
-Set M0 to CANDIDATE_FOR_ACCEPTANCE and present the user with the product contract plus M1a acceptance criteria. Only the user may set M0 to USER_ACCEPTED.
+Set M1a to CANDIDATE_FOR_ACCEPTANCE and stop. Only the user may set M1a to USER_ACCEPTED or start another gate.

@@ -27,22 +27,23 @@ Use the actual browser/desktop/mobile surface for primary workflows. Do not repl
 
 ### Packaging tests
 
-M1a Zip Edition, for each supported target on a clean machine, VM, or fresh user account:
+M1a Universal ZIP must follow the complete matrix in `zip-app-architecture.md`. At minimum, on clean Windows x64/ARM64, macOS Intel/Apple Silicon, and Linux x86_64/ARM64 targets:
 
-- extract the zip;
-- double-click the top-level launcher;
-- first-run wizard completes with no manual steps;
-- app opens in the browser and the primary workflow succeeds;
-- re-run after interrupting the wizard resumes cleanly;
-- restart preserves state;
-- log/config/data paths are correct.
+- extract the universal ZIP and select the clearly named top-level image;
+- observe the browser setup page before downloads;
+- install managed Python and locked binary dependencies with no developer tooling;
+- redirect to the real GUI and complete the primary workflow;
+- launch again without unnecessary downloads and preserve state;
+- verify source/manifest/lock changes without changing image hashes;
+- exercise network, TLS, permission, disk, integrity, lock, readiness, crash, and browser-open failures;
+- verify external runtime/data paths, cleanup, and the explicit release-root whitelist.
 
-M1b Packaged Edition, for each supported target:
+M1b signed/offline edition, for each supported target and only for features actually selected:
 
 - build from a clean CI runner;
 - install/extract;
 - launch;
-- sidecar health and shutdown;
+- packaged-runtime or sidecar health and shutdown where used;
 - create/save/reopen project;
 - log/config/data paths;
 - update/migration behavior;
@@ -67,7 +68,7 @@ run
 smoke
 ```
 
-Document exact commands in `AGENTS.md` and `SETUP.txt`. Agents must run the relevant commands after changes and report real results, not “should pass.”
+Document customer launch/recovery in `README.txt` and developer commands in ignored agent/dev files. Agents must run the relevant commands after changes and report real results, not “should pass.”
 
 ## Clean-environment requirement
 
@@ -79,12 +80,14 @@ At every release candidate, test from outside the developer's warm environment:
 - clean database and workspace;
 - release artifact on a machine/user account that did not build it.
 
+For M1a first-run tests, also remove system Python from the test assumption and isolate the application-data directory so managed-runtime bootstrap is exercised honestly.
+
 ## Cross-platform CI
 
 Use a matrix for supported operating systems and architectures. At minimum:
 
 - Windows current supported release;
-- macOS Apple Silicon; add Intel only if product evidence requires it;
+- macOS Apple Silicon and Intel for the M1a universal bundle;
 - Ubuntu LTS or the chosen Linux baseline.
 
 CI build success is necessary but not sufficient. GUI launch and OS security prompts require targeted manual smoke testing.

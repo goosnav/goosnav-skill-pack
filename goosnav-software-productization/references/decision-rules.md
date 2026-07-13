@@ -53,4 +53,4 @@ Do not rewrite a working application into the default stack automatically.
 
 Use a monorepo by default because shared contracts, tests, and coordinated releases matter. Split into separate repositories only when there is a real ownership, security, deployment, licensing, or lifecycle boundary.
 
-Within the monorepo, keep platform surfaces in separate top-level folders and prevent reverse dependencies into UI/platform code.
+Within the monorepo, keep platform surfaces separated beneath the customer `app/` payload or another deliberate internal directory; do not clutter the M1a release root. Prevent reverse dependencies into UI/platform code.

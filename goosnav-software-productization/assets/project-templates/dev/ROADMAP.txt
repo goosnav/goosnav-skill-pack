@@ -1,37 +1,27 @@
 {{PROJECT_NAME}} — PRODUCTIZATION ROADMAP
 Last updated: {{DATE}}
 
-M0 — PRODUCT CONTRACT AND ARCHITECTURE
+M1a — UNIVERSAL ZIP APPLICATION
 STATUS: ACTIVE
-OUTCOME: Complete product definition, architecture, test strategy, threat model, licensing decision, and M1 plan.
-EXIT GATE: User accepts project contract and authorizes M1.
+OUTCOME: One customer ZIP with stable macOS, Windows x64/ARM64, and Linux x86_64/ARM64 launcher images, automatic managed dependencies, and a verified browser GUI.
+EXIT GATE: Clean-target matrix, exception matrix, stable-image hashes, primary workflow, restart, and user acceptance.
 
-M1a — LOCAL BROWSER APPLICATION, ZIP EDITION
+M1b — SIGNED/OFFLINE PACKAGED EDITION (OPTIONAL)
 STATUS: NOT_STARTED
-OUTCOME: Dependable, sellable local product: zip release with iconed launcher, automatic first-run wizard, BYOK secrets, persistence, logs, and top-level tutorial.
-DEPENDENCIES: M0 accepted.
-EXIT GATE: User completes clean-machine zip acceptance workflow and approves M1a.
+OUTCOME: Requested signing, installers, offline runtime, OS credential storage, updates, or optional licensing.
+DEPENDENCIES: M1a accepted and explicit continuation.
 
-M1b — PACKAGED DESKTOP EDITION (DEFERRABLE)
+M2 — CLI + OPTIONAL TUI
 STATUS: NOT_STARTED
-OUTCOME: Tauri-packaged self-contained installers with bundled runtime, OS-keychain secrets, and cross-platform release evidence.
-DEPENDENCIES: M1a accepted. May be DEFERRED in favor of M2 and revisited before broad distribution.
-EXIT GATE: User completes clean-install acceptance workflow and approves M1b.
+OUTCOME: Stable automation surfaces using the same application services.
+DEPENDENCIES: M1a accepted and explicit continuation.
 
-M2 — CLI + OPTIONAL TUI AUTOMATION
+M3 — HOSTED ECOSYSTEM
 STATUS: NOT_STARTED
-OUTCOME: Stable noninteractive CLI and optional high-quality TUI using the same application services.
-DEPENDENCIES: M1a accepted and core boundaries stable.
-EXIT GATE: CLI parity, JSON/exit-code contract, user acceptance.
-
-M3 — HOSTED SUBSCRIPTION SAAS + COMMAND CENTER
-STATUS: NOT_STARTED
-OUTCOME: Multi-tenant hosted service with auth, billing, quotas, cost controls, jobs, observability, and owner operations.
-DEPENDENCIES: M1a accepted; M2 preferred when automation/API contracts help.
-EXIT GATE: Staging security/billing/cost/restore tests and user approval.
+OUTCOME: Repeatable SaaS apps, authenticated multi-app owner hub, and optional ZIP storefront integration.
+DEPENDENCIES: Accepted local product and explicit continuation.
 
 M4 — IOS + ANDROID
 STATUS: NOT_STARTED
 OUTCOME: Store-compliant mobile clients consuming the hosted API.
-DEPENDENCIES: M3 accepted and stable mobile API/product workflow.
-EXIT GATE: Physical-device, TestFlight/closed-test, billing/account, and store-readiness acceptance.
+DEPENDENCIES: Accepted hosted API/product workflow and explicit continuation.

@@ -19,6 +19,8 @@ Before work, read:
 
 Implement only the milestone marked ACTIVE in `dev/STATE.txt`. Future milestones may be planned coarsely, but may not be implemented until the active milestone is verified and explicitly accepted by the user.
 
+When no accepted milestone exists, default to M1a. Treat planning as its first slice rather than blocking implementation behind a separate M0 gate. Read the installed skill's `references/zip-app-architecture.md` before launcher work.
+
 ## Working rules
 
 - Preserve uncommitted user work.
@@ -28,6 +30,8 @@ Implement only the milestone marked ACTIVE in `dev/STATE.txt`. Future milestones
 - Never commit `.env`, credentials, local databases, logs, generated workspaces, uploads, caches, or build outputs.
 - Add tests with behavior changes.
 - Run the actual application surface; tests alone are insufficient.
+- Treat a launcher that does not open the browser GUI as failure.
+- Keep launcher images independent of mutable `app/` source and dependency manifests.
 - Update `dev/STATE.txt`, `dev/SPRINT_PLAN.txt`, `dev/DECISIONS.txt`, and other affected docs.
 - Do not add production dependencies without an active requirement and license/security review.
 - Do not perform unrelated refactors or framework changes.

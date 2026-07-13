@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Initialize GSPP governance files without overwriting existing project files."""
+"""Initialize private GSPP planning and customer-facing M1a documents safely."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ def render(text: str, values: dict[str, str]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Create GSPP governance and planning files in a repository."
+        description="Create GSPP M1a planning and customer-facing templates in a repository."
     )
     parser.add_argument("--project-root", required=True, help="Repository/project directory")
     parser.add_argument("--name", required=True, help="Human-readable product name")
@@ -92,7 +92,7 @@ def main() -> int:
     if overwritten:
         print("Overwritten files were backed up with the suffix .gspp-backup")
 
-    print("\nNext: complete M0 documents, then set M0 to CANDIDATE_FOR_ACCEPTANCE.")
+    print("\nNext: keep M1a active, preserve the working GUI, and define its universal ZIP acceptance path.")
     return 0
 
 

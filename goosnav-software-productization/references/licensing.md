@@ -31,7 +31,7 @@ When open community automation is valuable but the product must remain protected
 
 ## Required project action
 
-At M0, select and record:
+During the M1a planning preflight, select and record privately:
 
 - owner/copyright entity;
 - private, proprietary-visible, source-available, open-source, or dual-license model;

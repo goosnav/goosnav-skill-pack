@@ -1,0 +1,37 @@
+You are conducting a read‑only, static code‑review of my repo. You must not run code, install deps, or edit files. I want an exhaustive, architecture‑level analysis of how the system is supposed to work vs how it actually works.
+
+Goal: Identify all critical and subtle issues (not just obvious ones) and explain them in detail, including how the system should work architecturally, how it actually behaves, and why that gap exists.
+
+Must‑include scope
+main.py, agentd.py, orch.py, input/input.py, input/vision.py, network/camera_http.py, plus any prompt/building or caching logic.
+Vision pipeline (HTTP camera servers + local fallback + vision cache + prompt injection).
+Daemon lifecycle (agentd jobs, warmup, preload, heartbeat, shutdown).
+Audio/TTS/STT if it affects system state or responsiveness.
+Any other dependent modules or config that influence those flows.
+Required output format
+Return quantized explanation chunks.
+Each chunk must have:
+How it should work (intended design)
+How it actually works (current behavior)
+Why that’s bad (concrete failure mode / symptom)
+Where it lives (file + key function / code location)
+Complete fix plan (what to delete/add/move, and why)
+Constraints & Requirements
+No options. Give one coherent path that fits these decisions:
+Prompt builder must be input.py only. Orchestrator must call input.py for talk prompts.
+Vision cache must be text only (vision_data.txt). No JSON vision output in prompts.
+Agentd must run camera_http.py (local NVIDIA device hosts a server).
+Vision must scan multiple servers, including local and remote HTTP servers.
+Agentd is the only vision runner (no legacy “vision thread” system).
+Environment has OpenCV + llama-cpp + models installed.
+Also analyze shutdown behavior (camera stays on after exit) and ensure robust cleanup.
+Explain dependencies and integration risks for each fix: what could break, what to watch out for, and how to implement safely.
+If you find multiple prompt builders or legacy code, explicitly say what to remove or deprecate.
+Extra rigor
+If you think a subtle bug is likely but not obvious, say so and explain the reasoning.
+If multiple modules drift or duplicate logic, explicitly call out architecture split‑brain risks.
+If a fix could impact tool routing or two‑stage LLM prompts (router → talk), ensure the two‑stage flow is preserved.
+Final requirement
+End with a single consolidated roadmap in priority order (fix #1, #2, …), with dependencies and risks noted.
+Be extremely thorough. Think long and hard. Assume the project is due soon and missing any issue could be fatal.
+

@@ -42,6 +42,7 @@ Adapters own:
 
 - Git and GitHub.
 - Python workspace and lockfile: `uv` by default.
+- Stable launcher supervisor: Go standard library, compiled once per supported target from `assets/m1a-launcher/`.
 - JavaScript workspace and lockfile: `pnpm` by default.
 - Task entry points: a root `Makefile`, `justfile`, or cross-platform scripts. Do not make end-user operation depend on Make.
 - Pre-commit checks are encouraged, but CI remains authoritative.
@@ -88,36 +89,22 @@ For a public marketing site requiring server-rendered SEO, add a separate Next.j
 
 ## Local packaging
 
-### M1a Zip Edition (first sellable release)
+### M1a universal ZIP (default release)
 
-The zip is the release artifact. Layout:
+Use the exact root and supervisor protocol in `zip-app-architecture.md`. Ship macOS universal, Windows x64/ARM64, and Linux x86_64/ARM64 launcher images together with one adjacent mutable `app/` payload.
 
-- application source, locked dependency manifest, and static UI assets;
-- `start.command` (macOS), `start.sh` (macOS/Linux), `start.ps1` (Windows), optional `.bat` wrapper for users who cannot run PowerShell scripts directly;
-- a top-level double-clickable launcher (aliased to the platform script) carrying a professional icon (`.ico`/`.icns` assets), so the user experience is "double-click the app";
-- top-level tutorial with exact API-key acquisition and setup steps.
+- Compile the same standard-library Go supervisor for every target.
+- Bundle pinned `uv` executables under `app/launcher/tools/`.
+- Pin an exact managed Python and commit `uv.lock`.
+- Set `tool.uv.required-environments` for all six OS/architecture combinations and disable source builds during customer setup.
+- Store Python, environments, cache, logs, configuration, database, and runtime state in platform application-data directories.
+- Put `app/src` on the bootstrap import path (or use a no-build editable install) so source/static changes take effect without rebuilding launcher images or resynchronizing dependencies.
+- Open a loopback status page before downloads and redirect it to the GUI only after readiness.
+- Prebuild any frontend assets; never install Node.js or run a customer-machine frontend build.
 
-First-run wizard behavior (built into the launcher scripts):
+### M1b signed/offline edition (optional polish)
 
-1. detect a suitable Python; if absent, direct or drive the official installer with clear guidance;
-2. create the project virtual environment;
-3. install locked dependencies;
-4. run migrations/health checks;
-5. launch the loopback server and open the default browser;
-6. every step is idempotent — re-running the launcher after a partial failure resumes cleanly;
-7. failures print a plain-language message and the log location, never a raw stack trace as the only output.
-
-### M1b Packaged Edition (polish upgrade)
-
-- Tauri 2 shell for Windows, macOS, and Linux.
-- The same web UI assets in the WebView.
-- FastAPI backend packaged per target as a sidecar executable with PyInstaller.
-- Tauri starts the sidecar, waits for health, passes a one-time local session token, opens the application, and terminates the child on exit.
-- Development mode may open the normal browser against the same backend.
-
-Release artifacts are built separately per operating system and CPU architecture. Sign and notarize where commercially required.
-
-The Zip Edition remains valid for direct sales and technical buyers; use the Packaged Edition for broad or non-technical distribution.
+Add only requested improvements: signing/notarization, installers, a fully offline bundled runtime, OS credential storage, automatic updates, or optional licensing. A Tauri shell plus packaged Python sidecar remains an allowed choice when a native window materially improves the product; it is no longer mandatory merely to pass M1b.
 
 ## Local persistence and user workspaces
 

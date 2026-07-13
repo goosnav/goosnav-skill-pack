@@ -1,0 +1,7 @@
+# Replace each placeholder with the SHA-256 of the pinned uv executable.
+PLACEHOLDER  launcher/tools/macos-x64/uv
+PLACEHOLDER  launcher/tools/macos-arm64/uv
+PLACEHOLDER  launcher/tools/windows-x64/uv.exe
+PLACEHOLDER  launcher/tools/windows-arm64/uv.exe
+PLACEHOLDER  launcher/tools/linux-x64/uv
+PLACEHOLDER  launcher/tools/linux-arm64/uv

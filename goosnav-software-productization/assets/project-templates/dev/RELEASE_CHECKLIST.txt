@@ -24,6 +24,9 @@ TESTS
 [ ] End-to-end actual surface
 [ ] Failure/recovery
 [ ] Packaging/install/launch
+[ ] Five M1a launcher images present and target-smoked
+[ ] Launcher-image hashes unchanged by application-only update
+[ ] Universal ZIP contains only launchers, README.txt, LICENSE.txt, and app/
 [ ] Migration/upgrade
 [ ] Manual acceptance
 
@@ -41,7 +44,7 @@ Artifact | Target | Size | SHA-256 | Signed/Notarized | Smoke Result
 
 DOCUMENTATION
 -------------
-[ ] README/SETUP/tutorial current
+[ ] Customer README.txt current
 [ ] Known issues current
 [ ] License and attributions included
 [ ] Support/log locations documented

@@ -155,6 +155,22 @@ Minimum capabilities:
 
 Use Stripe and Supabase dashboards during early operations, but do not make routine product support depend on SQL or service-role credentials.
 
+### Multi-application integration contract
+
+When operating multiple products, make each application expose an authenticated versioned control contract for:
+
+- immutable application identity and deployed version;
+- health and maintenance state;
+- normalized subscriptions and entitlements;
+- usage, provider cost, quota, and global/application kill-switch state;
+- audited administrative commands and resulting events.
+
+Make the central hub consume this contract. Do not grant it ad hoc direct database access to every product. Keep application-local authorization authoritative and make every remote mutation idempotent and audited.
+
+### Digital-download storefront
+
+Keep the M1a ZIP storefront operationally simple and separate from hosted application runtimes. Publish normalized product, order, refund, payment, and download-entitlement events to the hub contract. The storefront controls convenient paid access to files; it does not imply DRM inside M1a applications.
+
 ## Enterprise lead flow
 
 Collect company, contact, use case, expected volume, security requirements, and desired date. Send a transactional email and create a CRM/support record. Calendar booking may use a scheduling link or API integration; do not expose private calendar credentials in the client.

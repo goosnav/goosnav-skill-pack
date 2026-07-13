@@ -10,15 +10,17 @@ REQUIREMENT-TO-TEST MATRIX
 REQ-ID | Requirement | Unit | Contract | Integration | E2E | Packaging | Manual Acceptance
 [TBD]
 
-M1 TESTS
---------
+M1a TESTS
+---------
 - Domain/application service unit tests
 - API contract tests
 - SQLite and filesystem integration
 - Browser primary-workflow E2E
 - Secret redaction and localhost security tests
-- Tauri/sidecar lifecycle tests
-- OS packaging and clean-machine smoke tests
+- Setup-page, managed-runtime, retry, readiness, and supervisor lifecycle tests
+- Stable-image hash tests across source/manifest/lock changes
+- macOS universal, Windows x64/ARM64, and Linux x86_64/ARM64 clean-target launcher tests
+- Universal ZIP root whitelist and executable-mode tests
 
 M2 TESTS
 --------

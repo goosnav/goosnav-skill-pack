@@ -5,12 +5,14 @@ DEFAULT STACK
 -------------
 Python: 3.12+
 Python workspace: uv
+M1a launcher supervisor: Go standard library
 API: FastAPI + Pydantic
 Persistence: SQLAlchemy + Alembic; SQLite local, Postgres hosted
-Web: React + TypeScript + Vite
-UI: Tailwind CSS + owned source components
+Web: static HTML/CSS/JS served by the backend by default
+UI escalation: React + TypeScript + Vite only for demonstrated complexity; ship prebuilt assets
 API client: generated from OpenAPI
-Desktop: Tauri 2 + packaged Python sidecar
+M1a images: macOS .app, Windows .exe, Linux AppImage
+M1b optional: signing, offline runtime, installer or Tauri/sidecar when justified
 CLI: Typer + Rich (M2)
 TUI: Textual when justified (M2)
 Hosted frontend: Vercel default (M3)

@@ -1,145 +1,72 @@
 # Milestone definitions and acceptance gates
 
-## M0 — Product contract and architecture
+## M0 — M1a planning preflight
 
-### Deliverables
+Treat M0 as a short internal preflight unless the user explicitly requests a separate architecture gate. Do not block a working local application behind document production.
 
-- Target user, pain, desired outcome, and primary job.
-- One-sentence product promise.
-- Primary workflow and failure/recovery workflow.
-- Functional requirements and explicit non-goals.
-- Data classification and retention assumptions.
-- Local/SaaS/mobile commercialization thesis.
-- Architecture context/component/data-flow diagrams.
-- M1a acceptance test written from the user's perspective.
+Establish the target user, primary GUI workflow, non-goals, data/secrets boundaries, current launch path, supported matrix, M1a acceptance test, and coarse later roadmap. Then set M1a active.
 
-### Gate evidence
+## M1a — Universal ZIP application (default)
 
-- No unresolved contradiction between North Star, software bible, architecture, and roadmap.
-- Critical external dependencies and costs identified.
-- M1 scope can fit into coherent vertical slices.
+Use one customer ZIP with five stable launcher images and one mutable `app/` payload. Read `zip-app-architecture.md` before implementing this gate.
 
-## M1 — Local edition
+### Internal slices
 
-M1 splits into M1a (Zip Edition, required and sellable) and M1b (Packaged Edition, a deferrable polish upgrade). After M1a is `USER_ACCEPTED`, the user chooses: build M1b now, or mark it `DEFERRED` and proceed to M2.
-
-### M1a Zip Edition — internal sub-stages
-
-1. Walking skeleton: browser UI -> local API -> persistence -> restart.
-2. Primary workflow: full user value, not placeholder screens.
-3. Reliability: migrations, errors, logs, recovery, tests.
-4. Configuration: settings, GUI-editable BYOK provider setup, validation, health checks.
-5. User projects: create/open/rename/archive/export with versioned manifests as applicable.
-6. Launchers and wizard: `start.command`/`start.sh`/`start.ps1`, iconed top-level launcher, idempotent first-run dependency wizard.
-7. Zip release: clean-machine smoke tests and a top-level tutorial covering API-key acquisition and setup.
-
-### M1a gate evidence
-
-- `git clone` plus documented developer setup succeeds.
-- On a clean machine or clean user account: extract zip, double-click launcher, wizard completes with no manual steps, app opens in the browser.
-- Main workflow succeeds after first run and after restart.
-- Re-running the launcher after an interrupted wizard resumes cleanly.
-- Corrupt/missing configuration yields recoverable guidance.
-- Secrets do not appear in logs, repo, crash reports, or support bundle.
-- A user can locate, export, and back up their projects.
-- Version and migration behavior is documented.
-
-### M1b Packaged Edition — internal sub-stages
-
-1. Tauri shell, PyInstaller sidecar, health/handshake lifecycle.
-2. Icons, installers/artifacts per OS and architecture.
-3. Secrets migrated to the OS credential store or Tauri secure store.
-4. Cross-platform release: CI matrix, clean-machine smoke tests, signing/notarization where required.
-
-### M1b gate evidence
-
-- Packaged release launches with no preinstalled runtime and no wizard.
-- Main workflow succeeds after install and after restart.
-- Uninstall/removal is clean.
-- Build reproduces from source on CI.
-
-## M2 — Automation edition
-
-### CLI contract
-
-Each command documents:
-
-- syntax and examples;
-- inputs and precedence (flag, environment, config, prompt);
-- output schema;
-- exit codes;
-- side effects;
-- idempotency/overwrite behavior;
-- log and diagnostics location.
-
-Suggested global flags:
-
-- `--config`
-- `--project`
-- `--json`
-- `--quiet`
-- `--verbose`
-- `--no-color`
-- `--non-interactive`
-- `--version`
-
-Do not require interactive prompts when all values can be passed explicitly.
-
-### TUI acceptance
-
-Only implement if it improves monitoring, iterative operation, browsing, or configuration. It should expose keyboard help, focus/navigation, progress, cancellation, status, and logs. It should survive terminal resizing and degraded color environments.
+1. Preserve the working GUI workflow and move changing product material beneath `app/`.
+2. Define the manifest/bootstrap contract and loopback readiness behavior.
+3. Generate stable Go supervisor images for macOS universal, Windows x64/ARM64, and Linux x86_64/ARM64.
+4. Bundle pinned `uv` tools and configure locked, no-build, cross-platform production dependencies.
+5. Implement versioned external runtimes, visible browser setup, retry/error handling, instance reuse, and child supervision.
+6. Assemble the explicit-whitelist universal ZIP and exercise the failure matrix.
+7. Produce clean-target evidence for every claimed OS/architecture.
 
 ### Gate evidence
 
-- GUI and CLI parity test for every shared primary workflow.
-- Shell automation consumes JSON output without parsing prose.
-- Failures return nonzero stable exit codes.
-- CLI can configure secrets through a secure mechanism without echoing them.
+- Extracting the ZIP exposes five clearly named launchers, `README.txt`, `LICENSE.txt`, and `app/` only.
+- The appropriate image opens a browser setup page immediately, downloads managed Python/dependencies without developer tooling, and redirects to the working GUI.
+- The primary workflow succeeds after first launch and restart; user data remains outside the release.
+- Source, static, manifest, lockfile, and Python-version changes do not change launcher-image hashes.
+- Lock/Python changes create a new ready runtime without damaging the prior one.
+- Every failure maps to the documented stable code and leaves useful sanitized logs.
+- All clean-target and exception cases in `zip-app-architecture.md` have actual evidence.
 
-## M3 — SaaS edition
+## M1b — Signed/offline packaged edition (optional)
 
-### Internal sub-stages
+Begin only after M1a is `USER_ACCEPTED` and the user explicitly continues.
 
-1. Cloud architecture and threat model.
-2. Staging deployment and tenant model.
-3. Authentication and authorization.
-4. Core workflow against cloud data/storage.
-5. Usage metering, quotas, and cost controls.
-6. Stripe billing and entitlement state machine.
-7. Background jobs, retries, and idempotency.
-8. Owner command center.
-9. Privacy, account lifecycle, support, backup/restore.
-10. Production launch and rollback.
+Possible outcomes:
 
-### Gate evidence
+- Developer ID signing/notarization and Windows signing;
+- installers or OS-native distribution wrappers;
+- fully offline bundled runtime/dependencies;
+- OS credential-store integration;
+- automatic updates;
+- optional licensing/activation only when explicitly required.
 
-- Cross-tenant access tests fail closed.
-- Stripe webhook replay is idempotent.
-- Payment cancellation/failure revokes or degrades access correctly.
-- Usage cannot exceed both plan and global spend caps.
-- Provider key never reaches browser/mobile clients.
-- Backup restore is rehearsed.
-- Staging can be promoted or reproduced from infrastructure configuration.
-- Admin actions are authorized and audited.
+M1b passes when clean targets launch without developer prerequisites, complete and persist the primary workflow, update/remove cleanly, and reproduce the signed build.
 
-## M4 — Mobile edition
+## M2 — CLI and optional TUI
 
-### Internal sub-stages
+Map commands directly to application services. Document syntax, inputs, output schema, exit codes, side effects, overwrite/idempotency behavior, and noninteractive setup. Provide stable `--json`. Build a TUI only when it adds monitoring, iterative operation, browsing, or configuration value.
 
-1. Mobile product decision and store-policy review.
-2. Navigation/design system and API client.
-3. Auth/session/deep-link flow.
-4. Primary workflow on device.
-5. Offline, retry, upload/download, and interruption behavior.
-6. Mobile purchase/account flow.
-7. Accessibility, privacy, telemetry, support.
-8. TestFlight/closed test and store submission.
+M2 passes when scripts consume documented output without parsing prose and GUI/CLI parity tests pass.
 
-### Gate evidence
+## M3 — Hosted ecosystem
 
-- Primary workflow works on physical iPhone and Android hardware.
-- Session survives normal lifecycle and expires safely.
-- Network interruption does not corrupt state or duplicate paid/costly operations.
-- Current store rules are documented with review date.
-- Account deletion and subscription management are reachable and compliant.
-- Production-signed builds and store assets exist.
+### M3a: repeatable SaaS application foundation
+
+Add tenant-aware storage, authentication/authorization, server-held provider keys, entitlements, quotas, usage/cost ledgers, hard caps, verified billing webhooks, jobs, backups, observability, privacy, and staging.
+
+### M3b: central owner hub
+
+Define an authenticated versioned integration contract for app identity, health, versions, subscriptions, entitlements, usage, cost, quota/kill-switch commands, and audit events. Make the hub use this contract instead of direct cross-application database access.
+
+### M3c: digital-download storefront
+
+Add a low-cost catalog/payment/download service for M1a ZIP products. Report products, orders, refunds, and download entitlements through the same hub contract. Keep it operationally separate from hosted application runtimes.
+
+M3 passes only after tenant isolation, webhook replay, cost caps, backup restore, privileged audit, and staging promotion/rollback tests pass.
+
+## M4 — Mobile
+
+Build iOS/Android clients against the accepted hosted API. Cover session storage, deep links, offline/retry behavior, interruption safety, accessibility, privacy disclosures, store-compliant billing/account management, crash reporting, and physical-device evidence.

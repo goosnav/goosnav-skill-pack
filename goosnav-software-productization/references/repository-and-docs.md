@@ -1,53 +1,43 @@
 # Repository structure and durable project documents
 
-## Mature target layout
+## M1a customer-facing layout
 
-Create directories only when their milestone begins; do not fill the repository with speculative implementations.
+Keep the main branch and release root understandable to a customer. Create later-stage directories only when their gate begins.
 
 ```text
-/
-├── AGENTS.md
-├── CLAUDE.md
-├── README.md
-├── SETUP.txt
+ProductName-M1a/
+├── Open ProductName — macOS.app/
+├── Open ProductName — Windows x64.exe
+├── Open ProductName — Windows ARM64.exe
+├── Open ProductName — Linux x86_64.AppImage
+├── Open ProductName — Linux ARM64.AppImage
+├── README.txt
 ├── LICENSE.txt
-├── .env.example
-├── .gitignore
-├── dev/
-│   ├── STATE.txt
-│   ├── NORTHSTAR.txt
-│   ├── SOFTWARE_BIBLE.txt
-│   ├── ARCHITECTURE.txt
-│   ├── TECH_STACK.txt
-│   ├── ROADMAP.txt
-│   ├── SPRINT_PLAN.txt
-│   ├── DECISIONS.txt
-│   ├── TEST_PLAN.txt
-│   ├── THREAT_MODEL.txt
-│   └── RELEASE_CHECKLIST.txt
-├── apps/
-│   ├── web/               # M1/M3 product client
-│   ├── desktop/           # M1b Tauri shell
-│   ├── admin/             # M3 owner command center
-│   └── mobile/            # M4 Expo application
-├── services/
-│   ├── api/               # FastAPI transport/composition
-│   └── worker/            # M3 jobs
-├── packages/
-│   ├── core/              # Python domain/application services
-│   ├── persistence/       # repositories and migrations
-│   ├── providers/         # AI/external adapters
-│   ├── cli/               # M2
-│   ├── tui/               # M2
-│   ├── api-client/        # generated TypeScript client
-│   ├── ui/                # web design system
-│   └── design-tokens/     # cross-surface tokens
-├── scripts/
-├── tests/
-└── .github/workflows/
+├── app/                    # mutable source, static assets, locks, launcher contract
+├── .env.example            # hidden safe names/placeholders only
+└── .gitignore
 ```
 
-A smaller project may use fewer directories, but retain the same boundaries. Do not create one giant `app.py` that owns transport, business logic, persistence, provider calls, and file paths.
+Keep private local-only files outside the release whitelist:
+
+```text
+AGENTS.md
+CLAUDE.md
+dev/
+├── STATE.txt
+├── NORTHSTAR.txt
+├── SOFTWARE_BIBLE.txt
+├── ARCHITECTURE.txt
+├── TECH_STACK.txt
+├── ROADMAP.txt
+├── SPRINT_PLAN.txt
+├── DECISIONS.txt
+├── TEST_PLAN.txt
+├── THREAT_MODEL.txt
+└── RELEASE_CHECKLIST.txt
+```
+
+Ignore those paths by default. Keep only customer-runtime application source, migrations, static files, lockfiles, and runtime launcher assets beneath `app/`. Reuse the skill's committed launcher template; keep tests, product-specific build inputs, and private engineering material in protected automation or an explicitly private development branch, and exclude them from the customer ZIP.
 
 ## Document ownership
 
@@ -138,13 +128,13 @@ Machine- and human-readable control plane for the development protocol. Keep the
 
 ```text
 PROTOCOL: GSPP
-PROTOCOL_VERSION: 1.0.0
-CURRENT_MILESTONE: M1
+PROTOCOL_VERSION: 1.1.0
+CURRENT_MILESTONE: M1a
 STATUS: ACTIVE
-LAST_USER_ACCEPTED_MILESTONE: M0
-NEXT_ALLOWED_MILESTONE: M1
-CURRENT_SLICE: M1-S03
-LAST_UPDATED: 2026-07-11
+LAST_USER_ACCEPTED_MILESTONE: NONE
+NEXT_ALLOWED_MILESTONE: M1a
+CURRENT_SLICE: M1a-S01
+LAST_UPDATED: 2026-07-13
 ```
 
 ### TEST_PLAN.txt
@@ -162,6 +152,8 @@ Evidence, not aspirations. Include artifact checksums, CI run, supported platfor
 ## Git rules
 
 - Commit source, tests, migrations, safe fixtures, docs, CI, and lockfiles.
+- Commit or generate the five required launcher images for the customer release and verify their hashes remain stable across application-only changes.
+- Ignore `/dev/`, `/dev-private/`, and top-level agent instruction files by default; remove already-tracked private paths from the index while preserving local copies.
 - Never commit `.env`, API keys, credential stores, production dumps, user projects, logs, caches, local databases, uploads, support bundles, build artifacts, or signing keys.
 - Provide `.env.example` with names, descriptions, and safe placeholders.
 - Keep generated API clients committed only when that improves reproducibility; verify they match the source schema in CI.

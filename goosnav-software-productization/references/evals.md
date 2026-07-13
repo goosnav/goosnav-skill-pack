@@ -1,47 +1,44 @@
 # Skill evaluation prompts
 
-Use fresh agent sessions and compare behavior with the skill enabled and disabled. A passing result follows the protocol without needing corrective prompting.
+Use fresh sessions when available. A passing result selects M1a without corrective prompting, loads `zip-app-architecture.md`, and does not begin later gates.
 
 ## Trigger-positive prompts
 
-1. “Build me a cross-platform AI image organizer I can sell locally and later turn into SaaS.”
-   - Expected: establishes M0/M1, plans later stages coarsely, does not scaffold SaaS/mobile.
-
-2. “Convert this working local web tool into a CLI for automation.”
-   - Expected: identifies M2, verifies M1a acceptance, reuses application services, defines JSON/exit-code contracts.
-
-3. “Take this desktop app and make it a subscription website with Stripe.”
-   - Expected: verifies local core boundaries, plans auth/tenant/billing/usage/admin, rejects client-side provider keys and redirect-only billing state.
-
-4. “Make an iPhone version of this web app.”
-   - Expected: verifies M3/hosted API readiness, chooses Expo by default, checks current store billing policy, does not embed Python sidecar.
-
-5. “Standardize this messy app repository.”
-   - Expected: inspects before rewriting, creates/merges governance docs, infers lowest milestone, avoids unrelated stack replacement.
+1. “Make this working local browser tool into an app I can sell as a ZIP.”
+   - Expected: sets M1a active; preserves the GUI; produces the universal root with five stable launcher images and one mutable `app/` payload.
+2. “Make this easy to download and run on Mac, Windows, and Linux.”
+   - Expected: uses the exact x64/ARM64 matrix, bundled `uv`, managed Python, locked no-build dependencies, and clean-target evidence.
+3. “I changed the Python source. Update the release.”
+   - Expected: updates `app/` and reassembles the ZIP without rebuilding launcher images; verifies unchanged image hashes.
+4. “Change the application entrypoint.”
+   - Expected: updates `manifest.json`/bootstrap contract without rebuilding images while schema version 1 remains sufficient.
+5. “Turn this accepted local product into a subscription website and central control panel.”
+   - Expected: verifies M1a acceptance, activates M3 only with explicit continuation, and plans the standard app integration contract before the owner hub.
 
 ## Guardrail prompts
 
-1. “Go ahead and build the local app, SaaS, and mobile app all at once.”
-   - Expected: preserves sequential automated gates; may honor explicit waiver of manual pauses but keeps changes separated and does not claim acceptance without evidence.
-
-2. “Put the OpenRouter key in frontend localStorage; it is simpler.”
-   - Expected: refuses insecure hosted design and uses server-side/OS secret storage appropriate to milestone.
-
-3. “Make users install Python automatically when they double-click.”
-   - Expected: implements this as the M1a first-run wizard (automatic, idempotent, clear failures); requires a bundled runtime only for the M1b Packaged Edition and broad distribution.
-
-4. “Open-source it but prohibit commercial use and modification.”
-   - Expected: corrects terminology to source-available/proprietary.
-
-5. “Use GitHub Pages for the whole Stripe/Python application.”
-   - Expected: explains static-host limitation and uses a proper API/worker host.
+1. “Just make the launcher run this report script; the GUI can come later.”
+   - Expected: rejects it as M1a failure because the launcher must produce the browser GUI.
+2. “Use pip against whatever Python is installed.”
+   - Expected: uses bundled pinned `uv`, managed exact Python, external versioned environments, and `uv.lock` instead.
+3. “This package needs gcc on Linux, so tell customers to install it.”
+   - Expected: fails the platform gate or changes the dependency; customer setup uses no compiler/source builds.
+4. “Put all planning docs in the public repository root.”
+   - Expected: ignores private `dev/`/agent files and keeps the release-root whitelist.
+5. “The Windows build compiled, so call ARM64/macOS/Linux supported too.”
+   - Expected: refuses untested claims and requires every clean-target GUI smoke.
+6. “Add license keys and DRM to M1a.”
+   - Expected: keeps M1a copy-unrestricted; defers optional licensing until explicitly requested after acceptance.
+7. “Build M1a, CLI, SaaS, hub, storefront, and mobile now.”
+   - Expected: implements M1a only and keeps later work coarse until user acceptance.
 
 ## Output-quality checks
 
-- Current milestone named explicitly.
-- Future milestones planned but not implemented prematurely.
-- User acceptance gate is concrete.
-- Changes use shared services rather than duplicated logic.
-- Security/data paths are explicit.
-- Real build/run verification is required.
-- The agent reports assumptions and decisions rather than wandering into alternatives.
+- M1a is the default active gate; M0 is a brief preflight.
+- The response names the visible universal ZIP layout and stable-image rule.
+- The launcher opens a browser status page before downloads and redirects only after readiness.
+- Errors use the stable codes and retry only transient failures.
+- Source/static changes do not enter the runtime fingerprint.
+- Lock/Python changes create a new external ready environment.
+- Public-release trust limitations are stated without confusing signing with DRM.
+- Actual build, clean-target GUI, and failure evidence is required.
