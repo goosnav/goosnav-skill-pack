@@ -1,0 +1,121 @@
+/* starter-tokens.css — a design-token base to ADAPT, not ship unchanged.
+ *
+ * These custom properties encode one coherent system: a tinted neutral ramp,
+ * a modular type scale, a spacing scale, radius, and motion. Change the three
+ * knobs at the top (accent hue, neutral hue, type ratio) to move the whole
+ * design at once, then bend individual values to the direction you committed
+ * to. Framework-agnostic: reference these vars from plain CSS, or map them into
+ * a Tailwind theme.
+ */
+
+:root {
+  /* ---- Knobs: change these first ---- */
+  --hue-accent: 14;      /* accent hue (deg). 14 = warm red-orange. */
+  --hue-neutral: 30;     /* tint the "grays" toward this hue. Keep near accent for cohesion. */
+  --neutral-chroma: 8%;  /* how much tint in the neutrals. 0% = dead gray (avoid). */
+
+  /* ---- Tinted neutral ramp (near-white -> near-black) ---- */
+  --n-0:  hsl(var(--hue-neutral) 30% 98%);
+  --n-1:  hsl(var(--hue-neutral) 18% 94%);
+  --n-2:  hsl(var(--hue-neutral) 14% 87%);
+  --n-3:  hsl(var(--hue-neutral) 10% 72%);
+  --n-4:  hsl(var(--hue-neutral) 9%  52%);
+  --n-5:  hsl(var(--hue-neutral) 10% 34%);
+  --n-6:  hsl(var(--hue-neutral) 12% 20%);
+  --n-7:  hsl(var(--hue-neutral) 14% 11%);
+
+  /* ---- Accent (used sparingly: action, links, one highlight) ---- */
+  --accent:       hsl(var(--hue-accent) 78% 48%);
+  --accent-hover: hsl(var(--hue-accent) 78% 42%);
+  --accent-weak:  hsl(var(--hue-accent) 60% 96%);
+
+  /* ---- Semantic roles ---- */
+  --bg:        var(--n-0);
+  --surface:   #fff;
+  --text:      var(--n-7);
+  --text-soft: var(--n-5);   /* real ramp step, NOT opacity on --text */
+  --text-faint:var(--n-4);
+  --border:    var(--n-2);
+  --link:      var(--accent);
+
+  /* ---- Type ---- */
+  --font-display: "Fraunces", Georgia, serif;   /* swap per direction */
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Modular scale, ratio 1.25. Fluid where it matters via clamp(). */
+  --step--1: 0.8rem;
+  --step-0:  1rem;      /* body: 16px */
+  --step-1:  1.25rem;
+  --step-2:  1.5625rem;
+  --step-3:  1.953rem;
+  --step-4:  clamp(2.2rem, 1.6rem + 3vw, 3.05rem);
+  --step-5:  clamp(2.8rem, 1.8rem + 5vw, 4.77rem);
+
+  --leading-body: 1.6;
+  --leading-tight: 1.1;
+  --measure: 65ch;      /* body line length */
+
+  /* ---- Spacing scale (4px base) ---- */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem; --sp-4: 1rem;
+  --sp-6: 1.5rem;   --sp-8: 2rem;    --sp-12: 3rem;   --sp-16: 4rem;
+  --sp-24: 6rem;    --sp-32: 8rem;
+
+  /* ---- Radius / border / elevation (commit to few values) ---- */
+  --radius: 5px;                 /* one small radius, applied consistently */
+  --hairline: 1px solid var(--border);
+  --shadow: 0 1px 2px hsl(var(--hue-neutral) 20% 10% / 0.06),
+            0 6px 20px hsl(var(--hue-neutral) 20% 10% / 0.07);  /* elevation only */
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 180ms;
+}
+
+/* Optional dark mode: a designed palette, not a filter. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        var(--n-7);
+    --surface:   var(--n-6);
+    --text:      var(--n-0);
+    --text-soft: var(--n-2);
+    --text-faint:var(--n-3);
+    --border:    var(--n-6);
+    --accent:       hsl(var(--hue-accent) 80% 62%);
+    --accent-hover: hsl(var(--hue-accent) 80% 70%);
+  }
+}
+
+/* ---- Baseline application (illustrative — wire into your own selectors) ---- */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3 { font-family: var(--font-display); line-height: var(--leading-tight); text-wrap: balance; margin: 0 0 var(--sp-4); }
+h1 { font-size: var(--step-5); letter-spacing: -0.02em; }
+h2 { font-size: var(--step-4); letter-spacing: -0.01em; }
+h3 { font-size: var(--step-2); }
+p  { max-width: var(--measure); margin: 0 0 var(--sp-4); }
+a  { color: var(--link); text-underline-offset: 0.15em; }
+
+.button {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-6);
+  background: var(--accent); color: #fff; border: none;
+  border-radius: var(--radius); font: inherit; font-weight: 600;
+  cursor: pointer; transition: background var(--dur) var(--ease-out);
+}
+.button:hover { background: var(--accent-hover); }
+.button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.card { background: var(--surface); border: var(--hairline); border-radius: var(--radius); padding: var(--sp-8); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

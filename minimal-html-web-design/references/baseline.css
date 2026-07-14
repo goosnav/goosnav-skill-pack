@@ -1,0 +1,28 @@
+/* baseline.css — the ONLY stylesheet this skill endorses, and it's optional.
+ *
+ * Element selectors only. No classes, no framework, no layout system, no reset.
+ * It does four humane things and stops:
+ *   1. caps line length so prose is readable (not full-window-wide),
+ *   2. sets a comfortable system font + line-height,
+ *   3. adds a little breathing room around the page,
+ *   4. keeps images from overflowing.
+ * Everything else is the browser's own (excellent) default stylesheet.
+ *
+ * Link it with:  <link rel="stylesheet" href="baseline.css">
+ * or inline the same rules in a single <style> in <head>.
+ */
+
+body {
+  max-width: 70ch;            /* readable measure; the single most useful rule */
+  margin: 2rem auto;          /* center the column, breathing room top/bottom */
+  padding: 0 1rem;            /* side padding so text never touches the edge */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.125rem;        /* ~18px, comfortable reading size */
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #fdfdfc;
+}
+
+img { max-width: 100%; height: auto; }   /* never overflow the column */
+
+/* That's it. Resist adding more — if you need real design, switch skills. */

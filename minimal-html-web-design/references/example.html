@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fern Hollow Library — Hours, Catalog Search &amp; Membership</title>
+
+  <!-- The ONLY styling: the optional class-free baseline (see baseline.css).
+       Delete this whole <style> block and the page is still fully usable and
+       correctly ordered — that is the test this skill cares about. -->
+  <style>
+    body { max-width: 70ch; margin: 2rem auto; padding: 0 1rem;
+           font-family: system-ui, sans-serif; font-size: 1.125rem;
+           line-height: 1.6; color: #1a1a1a; background: #fdfdfc; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p><strong>Fern Hollow Public Library</strong></p>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#catalog">Catalog</a></li>
+        <li><a href="#join">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Fern Hollow Public Library</h1>
+    <p>
+      A small community library on the east side. Browse the catalog, check our
+      hours, and sign up for a free card — no account or app required.
+    </p>
+
+    <section id="hours">
+      <h2>Opening hours</h2>
+      <table>
+        <thead>
+          <tr><th scope="col">Day</th><th scope="col">Open</th><th scope="col">Close</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Mon–Thu</th><td>9:00</td><td>20:00</td></tr>
+          <tr><th scope="row">Friday</th><td>9:00</td><td>17:00</td></tr>
+          <tr><th scope="row">Saturday</th><td>10:00</td><td>16:00</td></tr>
+          <tr><th scope="row">Sunday</th><td colspan="2">Closed</td></tr>
+        </tbody>
+      </table>
+
+      <details>
+        <summary>Holiday closures</summary>
+        <p>Closed on all public holidays and for one week of maintenance each
+        January. Exact January dates are posted at the front desk.</p>
+      </details>
+    </section>
+
+    <section id="catalog">
+      <h2>Search the catalog</h2>
+      <form action="/search" method="get">
+        <p>
+          <label for="q">Title, author, or keyword</label><br>
+          <input type="search" id="q" name="q" required placeholder="e.g. Ursula K. Le Guin">
+        </p>
+        <p>
+          <label for="format">Format</label><br>
+          <select id="format" name="format">
+            <option value="">Any</option>
+            <option value="book">Book</option>
+            <option value="ebook">E-book</option>
+            <option value="audio">Audiobook</option>
+          </select>
+        </p>
+        <p><button type="submit">Search</button></p>
+      </form>
+    </section>
+
+    <section id="join">
+      <h2>Join the library</h2>
+      <p>Membership is free for anyone living or working in the county.</p>
+      <form action="/join" method="post">
+        <fieldset>
+          <legend>Your details</legend>
+          <p>
+            <label for="name">Full name</label><br>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </p>
+          <p>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </p>
+          <p>
+            <label for="dob">Date of birth</label><br>
+            <input type="date" id="dob" name="dob">
+          </p>
+        </fieldset>
+        <p><button type="submit">Create my card</button></p>
+      </form>
+
+      <h3>What a card gets you</h3>
+      <dl>
+        <dt>Borrowing</dt><dd>Up to 20 items for 3 weeks, renewable twice.</dd>
+        <dt>Digital</dt><dd>E-books and audiobooks through our lending app.</dd>
+        <dt>Study rooms</dt><dd>Free to book up to two weeks ahead.</dd>
+      </dl>
+    </section>
+
+    <figure>
+      <blockquote cite="https://en.wikipedia.org/wiki/Jorge_Luis_Borges">
+        <p>I have always imagined that Paradise will be a kind of library.</p>
+      </blockquote>
+      <figcaption>— Jorge Luis Borges</figcaption>
+    </figure>
+  </main>
+
+  <footer>
+    <hr>
+    <p>Fern Hollow Public Library · 42 Elm Row · <a href="tel:+15550100">(555) 010-0</a></p>
+  </footer>
+
+</body>
+</html>
