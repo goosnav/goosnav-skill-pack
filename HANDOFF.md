@@ -1,5 +1,9 @@
 # Goosnav Skill Pack Handoff
 
+> Current layout note (2026-07-15): primary skills now live at the repository top level;
+> five secondary protocols moved under `extra-skills/`; and `goosnav-codebase-upgrade`
+> was added as a primary skill. The delivery notes below describe the earlier pack state.
+
 ## Delivered
 
 - Added six self-contained skill directories: MVP Delivery, Parent Verification, Local-First Workbench, Revenue Validation, Agentic Orchestration, and Research Simulation.

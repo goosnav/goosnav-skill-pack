@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Double-click this file in Finder (macOS) to install every skill in the pack
+# Double-click this file in Finder (macOS) to install every primary skill in the pack
 # for the current user. It just runs install-all.sh from its own folder.
 set -euo pipefail
 

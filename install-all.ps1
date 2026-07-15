@@ -26,7 +26,7 @@ $Installers = @(Get-ChildItem -LiteralPath $PackRoot -Directory | ForEach-Object
     }
 } | Sort-Object FullName)
 
-if ($Installers.Count -eq 0) { throw "No immediate skill directories containing install.ps1 were found" }
+if ($Installers.Count -eq 0) { throw "No primary skill directories containing install.ps1 were found" }
 
 foreach ($Installer in $Installers) {
     $SkillDir = [System.IO.Path]::GetFullPath($Installer.Directory.FullName)
@@ -46,4 +46,4 @@ foreach ($Installer in $Installers) {
     }
 }
 
-Write-Host "Installed $($Installers.Count) Goosnav skills."
+Write-Host "Installed $($Installers.Count) primary Goosnav skills. Supplemental skills under extra-skills are opt-in."

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Install every skill in this pack. No arguments needed:
+# Install every primary (top-level) skill in this pack. No arguments needed:
 #
-#   ./install-all.sh              # install all skills for the current user
-#   ./install-all.sh --repo PATH  # install all skills into a specific repo
+#   ./install-all.sh              # install all primary skills for the current user
+#   ./install-all.sh --repo PATH  # install all primary skills into a specific repo
 #
 set -euo pipefail
 
@@ -45,4 +45,4 @@ for installer in "${installers[@]}"; do
   bash "$installer" "${INSTALL_ARGS[@]}"
 done
 
-echo "Installed ${#installers[@]} skills."
+echo "Installed ${#installers[@]} primary skills. Supplemental skills under extra-skills are opt-in."

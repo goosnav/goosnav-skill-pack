@@ -1,0 +1,6 @@
+interface:
+  display_name: "Goosnav Codebase Upgrade"
+  short_description: "Harden and prove a partially working MVP"
+  default_prompt: "Use $goosnav-codebase-upgrade to critically audit, repair, and independently verify this MVP against its real end-user goal."
+policy:
+  allow_implicit_invocation: true

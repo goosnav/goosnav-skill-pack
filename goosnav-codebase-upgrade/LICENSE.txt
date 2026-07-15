@@ -1,0 +1,4 @@
+Copyright (c) Goosnav LLC. All rights reserved.
+
+This skill pack is proprietary. Internal use, modification, and installation are permitted.
+Redistribution, sublicensing, or commercial resale requires prior written permission from Goosnav LLC.

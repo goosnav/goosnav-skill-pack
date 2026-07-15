@@ -11,7 +11,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-NEW_SKILLS = {
+REQUIRED_PRIMARY_SKILLS = {
+    "goosnav-codebase-upgrade",
+}
+LEGACY_HERMES_SKILLS = {
     "goosnav-mvp-delivery",
     "goosnav-parent-verification",
     "goosnav-local-first-workbench",
@@ -81,7 +84,7 @@ def validate_skill(skill: Path, errors: list[str]) -> None:
         if not (skill / required).is_file():
             errors.append(f"{name}: missing {required}")
 
-    if name in NEW_SKILLS:
+    if name in LEGACY_HERMES_SKILLS:
         for key in ("version", "author", "license"):
             if not values.get(key):
                 errors.append(f"{name}: missing frontmatter {key}")
@@ -113,13 +116,18 @@ def validate_skill(skill: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    skills = sorted(path for path in ROOT.iterdir() if path.is_dir() and (path / "SKILL.md").is_file())
-    names = {path.name for path in skills}
-    missing = NEW_SKILLS - names
+    primary_skills = sorted(path for path in ROOT.iterdir() if path.is_dir() and (path / "SKILL.md").is_file())
+    supplemental_root = ROOT / "extra-skills"
+    supplemental_skills = sorted(
+        path for path in supplemental_root.iterdir() if path.is_dir() and (path / "SKILL.md").is_file()
+    ) if supplemental_root.is_dir() else []
+    skills = [*primary_skills, *supplemental_skills]
+    primary_names = {path.name for path in primary_skills}
+    missing = REQUIRED_PRIMARY_SKILLS - primary_names
     if missing:
-        errors.append(f"missing required skills: {', '.join(sorted(missing))}")
-    if not skills:
-        errors.append("no immediate skill directories found")
+        errors.append(f"missing required primary skills: {', '.join(sorted(missing))}")
+    if not primary_skills:
+        errors.append("no primary skill directories found")
 
     for skill in skills:
         validate_skill(skill, errors)
@@ -157,7 +165,10 @@ def main() -> int:
         print(f"ERROR: {error}", file=sys.stderr)
     if errors:
         return 1
-    print(f"PASS: validated {len(skills)} skills and pack installers")
+    print(
+        f"PASS: validated {len(primary_skills)} primary and "
+        f"{len(supplemental_skills)} supplemental skills plus pack installers"
+    )
     return 0
 
 
