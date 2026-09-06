@@ -17,6 +17,8 @@ copy_skill() {
   local staging
   staging="$(mktemp -d)"
   cp -R "$SOURCE_DIR" "$staging/$SKILL_NAME"
+  # Finder drops .DS_Store into any folder it displays; never ship it.
+  find "$staging" -name '.DS_Store' -delete
   rm -rf "$destination"
   mv "$staging/$SKILL_NAME" "$destination"
   rmdir "$staging"

@@ -16,6 +16,8 @@ copy_skill() {
   staging="$(mktemp -d "$root/.${SKILL_NAME}.tmp.XXXXXX")"
   trap 'rm -rf "${staging:-}"' EXIT
   cp -R "$SOURCE_DIR/." "$staging/"
+  # Finder drops .DS_Store into any folder it displays; never ship it.
+  find "$staging" -name '.DS_Store' -delete
   rm -rf "$destination"
   mv "$staging" "$destination"
   trap - EXIT

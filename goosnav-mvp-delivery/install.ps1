@@ -12,6 +12,7 @@ function Copy-Skill([string]$Root) {
     New-Item -ItemType Directory -Path $Staging | Out-Null
     try {
         Get-ChildItem -LiteralPath $SourceDir -Force | Copy-Item -Destination $Staging -Recurse -Force
+        Get-ChildItem -LiteralPath $Staging -Recurse -Force -Filter '.DS_Store' | Remove-Item -Force
         if (Test-Path -LiteralPath $Destination) { Remove-Item -LiteralPath $Destination -Recurse -Force }
         Move-Item -LiteralPath $Staging -Destination $Destination
     } finally { if (Test-Path -LiteralPath $Staging) { Remove-Item -LiteralPath $Staging -Recurse -Force } }

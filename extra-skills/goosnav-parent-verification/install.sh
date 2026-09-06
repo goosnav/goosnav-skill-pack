@@ -7,7 +7,7 @@ copy_skill() {
   local root="$1" destination staging; destination="$root/$SKILL_NAME"
   [[ "$destination" != "$SOURCE_DIR" && "$destination" != "$SOURCE_DIR/"* ]] || { echo "ERROR: refusing a destination inside the source skill" >&2; exit 2; }
   mkdir -p "$root"; staging="$(mktemp -d "$root/.${SKILL_NAME}.tmp.XXXXXX")"; trap 'rm -rf "${staging:-}"' EXIT
-  cp -R "$SOURCE_DIR/." "$staging/"; rm -rf "$destination"; mv "$staging" "$destination"; trap - EXIT
+  cp -R "$SOURCE_DIR/." "$staging/"; find "$staging" -name '.DS_Store' -delete; rm -rf "$destination"; mv "$staging" "$destination"; trap - EXIT
   echo "Installed: $destination"
 }
 remove_legacy() {

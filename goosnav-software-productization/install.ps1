@@ -20,6 +20,7 @@ function Copy-Skill([string]$DestinationRoot) {
     $StagingSkill = Join-Path $StagingRoot $SkillName
     New-Item -ItemType Directory -Force -Path $StagingRoot | Out-Null
     Copy-Item -Recurse -Force $SourceDir $StagingSkill
+    Get-ChildItem -LiteralPath $StagingSkill -Recurse -Force -Filter '.DS_Store' | Remove-Item -Force
     if (Test-Path $Destination) { Remove-Item -Recurse -Force $Destination }
     Move-Item $StagingSkill $Destination
     Remove-Item -Recurse -Force $StagingRoot

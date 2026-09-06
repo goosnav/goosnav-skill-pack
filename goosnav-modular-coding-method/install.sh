@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SKILL_NAME="goosnav-mvp-delivery"
+SKILL_NAME="goosnav-modular-coding-method"
 SOURCE_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-usage() { echo "Usage: $0 --user | --repo /path/to/repository" >&2; exit 2; }
+usage() { echo "Usage: $0 [--user | --repo /path/to/repository]" >&2; exit 2; }
 
 copy_skill() {
   local root="$1" destination staging

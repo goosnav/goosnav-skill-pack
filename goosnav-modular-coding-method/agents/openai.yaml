@@ -1,0 +1,6 @@
+interface:
+  display_name: "Goosnav Modular Coding Method"
+  short_description: "Build software one contracted, testbenched black-box module at a time, with a hard stop between bricks."
+  default_prompt: "Apply the Goosnav Modular Coding Method. Declare your mode, write the contract before the code and the testbench before the implementation, build exactly one brick, prove it, and stop for human sign-off."
+policy:
+  allow_implicit_invocation: true

@@ -9,6 +9,7 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `goosnav-software-productization` | A working local product needs gated cross-platform distribution, later SaaS/mobile expansion, or the existing M1a launcher protocol. |
 | `goosnav-mvp-delivery` | An idea must become a complete, launchable vertical slice with a shared core, GUI/CLI, fixtures, verifier, and proof. |
 | `goosnav-codebase-upgrade` | A partially working MVP needs adversarial health audits, specialist repairs, end-user/browser proof, security hardening, honest docs, and GitHub readiness. |
+| `goosnav-modular-coding-method` | Code must be built one contracted, testbenched black-box module at a time, with human sign-off between bricks and a growing assembly proven at every rung. |
 | `nasa-v-model` | An idea must become a complete, traceable specification suite (ConOps → requirements → architecture → detailed design → V&V, with a traceability matrix) before anyone writes code. |
 | `aesthetic-web-design` | A web page or app must look genuinely good and intentional — not generic AI/template "slop." Owns art direction, type, color, spacing, and polish. |
 | `minimal-html-web-design` | A page should be built from plain, semantic HTML with little or no CSS — highly functional, fast, accessible, and still sensibly organized. |
@@ -23,7 +24,7 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `goosnav-agentic-orchestration` | Claude, Codex, or local models need bounded assignments, evaluator contracts, recovery handoffs, and an anti-repeat loop. |
 | `goosnav-research-simulation` | A research, agent, society, or simulation product needs a deterministic constrained core, replay artifacts, and explicit fictional/safety boundaries. |
 
-Use the narrowest skill that owns the immediate outcome. Combine skills through their handoff artifacts: for example, MVP Delivery can hand a candidate to Parent Verification, Local-First Workbench can hand a product to Software Productization, and Revenue Validation can consume the proof artifact from either.
+Use the narrowest skill that owns the immediate outcome. Combine skills through their handoff artifacts: for example, MVP Delivery can hand a candidate to Parent Verification, Local-First Workbench can hand a product to Software Productization, and Revenue Validation can consume the proof artifact from either. Modular Coding Method consumes a `nasa-v-model` architecture as its module map and hands finished subsystems to Codebase Upgrade or Software Productization.
 
 ## Layout
 
@@ -36,9 +37,11 @@ goosnav-skill-pack/
 ├── install-all.command   # macOS: double-click to install all
 ├── install-all.ps1
 ├── validate-pack.py
+├── .gitignore
 ├── goosnav-software-productization/
 ├── goosnav-mvp-delivery/
 ├── goosnav-codebase-upgrade/
+├── goosnav-modular-coding-method/
 ├── nasa-v-model/
 ├── aesthetic-web-design/
 ├── minimal-html-web-design/
@@ -69,11 +72,12 @@ PowerShell equivalents (Windows) — `-Scope User` is the default, so bare invoc
 .\install-all.ps1 -Scope Repo -RepoPath C:\path\to\repository
 ```
 
-To install one primary or supplemental skill, run the corresponding script from that skill directory with the same mode. For example, `./extra-skills/goosnav-parent-verification/install.sh --user`. Installation copies only that skill into `.agents/skills/<skill-name>`, replaces an older canonical copy, and removes only same-name legacy copies from `.codex/skills` and `.claude/skills`. Installers refuse missing repository roots, filesystem roots, and destinations nested inside their own source skill.
+To install one primary or supplemental skill, run the corresponding script from that skill directory with the same mode. For example, `./extra-skills/goosnav-parent-verification/install.sh --user`. On macOS every skill directory also carries its own **`install.command`**, so double-clicking that file in Finder installs just that skill for the current user; it reports the failure and waits rather than closing the window if anything goes wrong. Installation copies only that skill into `.agents/skills/<skill-name>`, replaces an older canonical copy, and removes only same-name legacy copies from `.codex/skills` and `.claude/skills`. Installers refuse missing repository roots, filesystem roots, and destinations nested inside their own source skill.
 
 ## Safety and data rules
 
 - Installation is local source-to-destination copying. No installer downloads code or contacts a network service.
+- Installers strip `.DS_Store` from the staged copy, so Finder metadata never reaches an installed skill. Source folders are left untouched.
 - Never place credentials, customer data, personal outreach data, production exports, or user workspaces in this pack.
 - Treat fixture/sample modes as visibly fictional and deterministic. Never pass their output off as observed customer or market evidence.
 - Use owner gates before sending outreach, spending money, publishing, deleting data, or performing irreversible external actions.

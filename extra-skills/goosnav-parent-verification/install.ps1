@@ -6,7 +6,7 @@ function Copy-Skill([string]$Root) {
     $Destination = [IO.Path]::GetFullPath((Join-Path $Root $SkillName)); $Prefix = $SourceDir.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
     if ($Destination -eq $SourceDir -or $Destination.StartsWith($Prefix, [StringComparison]::OrdinalIgnoreCase)) { throw "Refusing a destination inside the source skill" }
     New-Item -ItemType Directory -Force -Path $Root | Out-Null; $Staging = Join-Path $Root (".$SkillName.tmp." + [Guid]::NewGuid()); New-Item -ItemType Directory -Path $Staging | Out-Null
-    try { Get-ChildItem -LiteralPath $SourceDir -Force | Copy-Item -Destination $Staging -Recurse -Force; if (Test-Path -LiteralPath $Destination) { Remove-Item -LiteralPath $Destination -Recurse -Force }; Move-Item -LiteralPath $Staging -Destination $Destination }
+    try { Get-ChildItem -LiteralPath $SourceDir -Force | Copy-Item -Destination $Staging -Recurse -Force; Get-ChildItem -LiteralPath $Staging -Recurse -Force -Filter '.DS_Store' | Remove-Item -Force; if (Test-Path -LiteralPath $Destination) { Remove-Item -LiteralPath $Destination -Recurse -Force }; Move-Item -LiteralPath $Staging -Destination $Destination }
     finally { if (Test-Path -LiteralPath $Staging) { Remove-Item -LiteralPath $Staging -Recurse -Force } }; Write-Host "Installed: $Destination"
 }
 function Remove-Legacy([string]$Root) { $Destination = [IO.Path]::GetFullPath((Join-Path $Root $SkillName)); if (-not (Test-Path -LiteralPath $Destination)) { return }; if ($Destination -eq $SourceDir) { Write-Host "Retained active source: $Destination"; return }; Remove-Item -LiteralPath $Destination -Recurse -Force; Write-Host "Removed same-name legacy copy: $Destination" }

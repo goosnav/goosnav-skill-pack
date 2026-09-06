@@ -1,0 +1,9 @@
+# macOS Finder metadata. These appear in any folder Finder displays, and the
+# per-skill install.command files mean Finder now visits every skill directory.
+# Installers also strip them during the copy so they never reach an installed skill.
+.DS_Store
+**/.DS_Store
+
+# Python bytecode from running the bundled validators and scripts.
+__pycache__/
+*.py[cod]
