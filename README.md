@@ -13,6 +13,7 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `nasa-v-model` | An idea must become a complete, traceable specification suite (ConOps → requirements → architecture → detailed design → V&V, with a traceability matrix) before anyone writes code. |
 | `aesthetic-web-design` | A web page or app must look genuinely good and intentional — not generic AI/template "slop." Owns art direction, type, color, spacing, and polish. |
 | `minimal-html-web-design` | A page should be built from plain, semantic HTML with little or no CSS — highly functional, fast, accessible, and still sensibly organized. |
+| `evangelion-ui` | An interface should be art-directed in the classic Neon Genesis Evangelion instrument language — NERV/MAGI panels, analog CRT rendering, functional information design. |
 
 ## Supplemental skills
 
@@ -45,6 +46,7 @@ goosnav-skill-pack/
 ├── nasa-v-model/
 ├── aesthetic-web-design/
 ├── minimal-html-web-design/
+├── evangelion-ui/
 └── extra-skills/
     └── goosnav-<supplemental-skill>/
 ```
@@ -88,7 +90,7 @@ To install one primary or supplemental skill, run the corresponding script from 
 
 ```bash
 python3 validate-pack.py
-for validator in goosnav-*/scripts/validate_skill.py; do python3 "$validator"; done
+for validator in */scripts/validate_skill.py; do python3 "$validator"; done
 for validator in extra-skills/goosnav-*/scripts/validate_skill.py; do python3 "$validator"; done
 find . -mindepth 2 -maxdepth 2 -name install.sh -exec bash -n {} \;
 find extra-skills -mindepth 2 -maxdepth 2 -name install.sh -exec bash -n {} \;

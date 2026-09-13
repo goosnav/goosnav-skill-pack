@@ -1,0 +1,15 @@
+interface:
+  display_name: Evangelion UI
+  short_description: Classic Evangelion interfaces with analog CRT texture
+  default_prompt: Use $evangelion-ui to design and implement this interface with authentic
+    instrument typography, a configurable palette, restrained CRT effects, and real
+    application data.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
