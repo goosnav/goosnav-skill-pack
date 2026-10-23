@@ -38,22 +38,36 @@
 .eva-grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:16px; align-items:start; }
 .eva-stack { display:grid; gap:var(--eva-space); }
 .eva-controls { display:flex; flex-wrap:wrap; gap:8px; }
-.eva button,.eva select,.eva input:not([type="checkbox"]):not([type="range"]):not([type="radio"]) { font:inherit; border:1px solid var(--eva-border); border-radius:0; color:var(--eva-text); background:var(--eva-bg); min-height:44px; padding:8px 12px; max-width:100%; }
+.eva button,.eva select,.eva textarea,.eva input:not([type="checkbox"]):not([type="range"]):not([type="radio"]) { font:inherit; border:1px solid var(--eva-border); border-radius:0; color:var(--eva-text); background:var(--eva-bg); min-height:44px; padding:8px 12px; max-width:100%; }
 .eva button { cursor:pointer; font-weight:700; }
 .eva button:hover:not(:disabled) { border-color:var(--eva-primary); background:var(--eva-surface); }
 .eva button.eva-button-primary { background:var(--eva-primary); color:var(--eva-bg); border-color:var(--eva-primary); }
-.eva button.eva-button-primary:hover:not(:disabled) { outline:1px solid var(--eva-primary); outline-offset:2px; }
-.eva button:disabled { color:var(--eva-muted); cursor:not-allowed; border-style:dashed; }
+.eva button.eva-button-primary:hover:not(:disabled) { background:var(--eva-primary); color:var(--eva-bg); outline:1px solid var(--eva-primary); outline-offset:2px; }
+.eva button:disabled,.eva input:disabled,.eva select:disabled,.eva textarea:disabled { color:var(--eva-muted); background:var(--eva-surface); cursor:not-allowed; border-style:dashed; opacity:1; }
 .eva a { color:var(--eva-secondary); text-underline-offset:4px; }
 .eva :focus-visible { outline:2px solid var(--eva-focus); outline-offset:4px; }
 .eva input[type="range"] { width:100%; min-height:32px; }
 .eva input[type="checkbox"] { width:20px; height:20px; }
 .eva-field { display:grid; gap:6px; }
-.eva-readout { color:var(--eva-primary); font:700 clamp(40px,7vw,100px)/1 var(--eva-font-mono); font-variant-numeric:tabular-nums; letter-spacing:-.06em; white-space:nowrap; }
+.eva-field > :is(input,select,textarea) { width:100%; min-width:0; }
+.eva textarea { resize:vertical; min-height:8rem; }
+.eva textarea.eva-code { font-family:var(--eva-font-mono); font-size:calc(14px * var(--eva-scale)); line-height:1.65; tab-size:2; }
+.eva input::placeholder,.eva textarea::placeholder { color:var(--eva-muted); opacity:1; }
+.eva [aria-invalid="true"] { border-color:var(--eva-danger); }
+.eva-help { color:var(--eva-muted); font-size:.875em; overflow-wrap:anywhere; }
+.eva-field-error { color:var(--eva-danger); overflow-wrap:anywhere; }
+.eva-field-error:empty { display:none; }
+.eva-empty { border:1px dashed var(--eva-border); padding:var(--eva-space); color:var(--eva-muted); }
+.eva-nav { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.eva-nav a { display:inline-flex; align-items:center; min-height:44px; padding-block:8px; }
+.eva-nav [aria-current="page"] { color:var(--eva-primary); border-block-end:2px solid currentColor; text-decoration:none; }
+.eva-readout { color:var(--eva-primary); font:700 clamp(40px,7vw,100px)/1 var(--eva-font-mono); font-variant-numeric:tabular-nums; letter-spacing:-.06em; max-width:100%; overflow-wrap:anywhere; }
 .eva-status { color:var(--eva-secondary); border:1px solid currentColor; padding:4px 8px; display:inline-flex; gap:8px; align-items:center; font-weight:700; }
 .eva-status[data-state="error"] { color:var(--eva-danger); }
 .eva-status[data-state="warning"] { color:var(--eva-warning); }
 .eva-status[data-state="success"] { color:var(--eva-success); }
+.eva-status[data-state="unknown"] { color:var(--eva-muted); }
+.eva-status[data-state="pending"] { color:var(--eva-primary); }
 .eva-table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
 .eva-table th,.eva-table td { padding:10px 8px; border-block-end:1px solid var(--eva-border); text-align:start; overflow-wrap:anywhere; }
 .eva-table th { color:var(--eva-muted); font-weight:400; }
@@ -66,6 +80,7 @@
 .eva[data-analog="off"] .eva-emission, .eva[data-analog="off"].eva-emission { text-shadow:none; }
 .eva[data-analog="off"].eva-screen::before,.eva[data-analog="off"].eva-screen::after,.eva[data-analog="off"] .eva-screen::before,.eva[data-analog="off"] .eva-screen::after { display:none; }
 @media(max-width:760px) { .eva-grid { grid-template-columns:minmax(0,1fr); } .eva-title { font-size:clamp(32px,9vw,60px); } .eva-readout { font-size:clamp(32px,9vw,66px); } }
-@media(prefers-reduced-motion:reduce) { .eva [data-eva-motion],.eva [data-eva-motion]::before,.eva [data-eva-motion]::after { animation:none!important; transition:none!important; } }
-@media(forced-colors:active) { .eva-screen::before,.eva-screen::after { display:none; } .eva-emission { text-shadow:none; } .eva button { border:1px solid ButtonText; } }
-@media print { .eva { background:#fff; color:#000; --eva-primary:#000; --eva-secondary:#000; --eva-text:#000; --eva-muted:#333; --eva-border:#777; --eva-surface:#fff; } .eva-screen::before,.eva-screen::after { display:none; } .eva-emission { text-shadow:none; } }
+@media(prefers-reduced-motion:reduce) { .eva[data-eva-motion],.eva[data-eva-motion]::before,.eva[data-eva-motion]::after,.eva [data-eva-motion],.eva [data-eva-motion]::before,.eva [data-eva-motion]::after { animation:none!important; transition:none!important; } }
+@media(prefers-contrast:more) { .eva { --eva-border:var(--eva-text)!important; } .eva-screen::before,.eva-screen::after { display:none; } .eva-emission { text-shadow:none; } }
+@media(forced-colors:active) { .eva-screen::before,.eva-screen::after { display:none; } .eva-emission { text-shadow:none; } .eva button,.eva button.eva-button-primary { color:ButtonText; background:ButtonFace; border:1px solid ButtonText; } .eva button:disabled { color:GrayText; border-color:GrayText; } .eva :focus-visible { outline-color:Highlight; } }
+@media print { .eva { color-scheme:light; background:#fff; color:#000; --eva-bg:#fff!important; --eva-primary:#000!important; --eva-secondary:#000!important; --eva-text:#000!important; --eva-muted:#333!important; --eva-border:#777!important; --eva-surface:#fff!important; --eva-danger:#000!important; --eva-warning:#000!important; --eva-success:#000!important; } .eva-screen::before,.eva-screen::after { display:none; } .eva-emission { text-shadow:none; } }

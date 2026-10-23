@@ -1,0 +1,4 @@
+interface:
+  display_name: "Goosnav Early Web Design"
+  short_description: "Refined early-web interfaces with Goosnav discipline"
+  default_prompt: "Use $goosnav-early-web-design to design a clear, professional Goosnav interface with restrained early-internet character."

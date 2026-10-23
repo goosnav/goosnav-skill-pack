@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goosnav Labs — example software catalog</title>
+  <meta name="description" content="A functional, local example of Goosnav's refined early-web software style.">
+  <link rel="stylesheet" href="early-web.css">
+</head>
+<body class="gn-web">
+  <a class="gew-skip" href="#catalog">Skip to catalog</a>
+  <div class="gew-frame">
+    <header>
+      <div class="gew-masthead">
+        <div>
+          <p class="gew-wordmark">GOOSNAV</p>
+          <p class="gew-kicker">LABS / SOFTWARE LIBRARY</p>
+        </div>
+        <p class="gew-edition">An interface specimen · Local example</p>
+      </div>
+      <nav class="gew-navigation" aria-label="Page sections">
+        <a href="#catalog">Browse catalog</a>
+        <a href="#about">About this example</a>
+        <a href="#states">Interface states</a>
+      </nav>
+      <div class="gew-intro">
+        <h1>Small tools. Clear jobs.</h1>
+        <p class="gew-editorial">A shelf of useful software, arranged so you can find what you came for.</p>
+        <p class="gew-example-note">All six entries below are fictional examples. Search, filtering, saving, and example downloads work on this page.</p>
+      </div>
+    </header>
+
+    <main id="catalog" tabindex="-1">
+      <div class="gew-titlebar">
+        <h2 id="catalog-title">Software catalog</h2>
+        <span>Browse · Compare · Save</span>
+      </div>
+      <form id="search-form" class="gew-search" role="search">
+        <label for="query">Search the examples</label>
+        <div class="gew-search-line">
+          <input id="query" type="search" name="query" placeholder="Name, purpose, or file type" autocomplete="off">
+          <button class="gew-button gew-button--primary" type="submit">Search</button>
+        </div>
+      </form>
+
+      <div class="gew-catalog-layout">
+        <aside class="gew-sidebar" aria-label="Catalog filters">
+          <fieldset id="category-filters">
+            <legend>Browse by category</legend>
+            <label class="gew-choice"><input type="radio" name="category" value="all" checked>All examples</label>
+            <label class="gew-choice"><input type="radio" name="category" value="Utilities">Utilities</label>
+            <label class="gew-choice"><input type="radio" name="category" value="Research">Research</label>
+            <label class="gew-choice"><input type="radio" name="category" value="Media">Media</label>
+          </fieldset>
+          <fieldset id="saved-filters">
+            <legend>Your selection</legend>
+            <label class="gew-choice"><input id="saved-only" type="checkbox"><span id="saved-label">Saved only (0)</span></label>
+          </fieldset>
+          <p class="gew-small">Saved items stay selected until you reload the page.</p>
+          <button id="export-saved" class="gew-button" type="button" disabled aria-describedby="export-help">Export selection</button>
+          <p id="export-help" class="gew-small">Save an example to enable a JSON export.</p>
+          <button id="reset-filters" class="gew-button" type="button">Reset filters</button>
+        </aside>
+
+        <section id="results" class="gew-results" aria-labelledby="catalog-title" aria-busy="false">
+          <div class="gew-toolbar">
+            <p id="result-count" class="gew-count">6 example tools</p>
+            <div class="gew-sort">
+              <label for="sort">Sort by</label>
+              <select id="sort">
+                <option value="name">Name (A to Z)</option>
+                <option value="category">Category</option>
+                <option value="number">Example number</option>
+              </select>
+            </div>
+          </div>
+          <div id="busy-state" class="gew-state gew-state--busy" hidden>
+            <h3>Loading example catalog</h3>
+            <p>The local examples will be ready in a moment.</p>
+          </div>
+          <div id="error-state" class="gew-state gew-state--error" hidden>
+            <h3>Example catalog did not load</h3>
+            <p>This is a simulated error from the interface-state controls. Your saved selection is still available.</p>
+            <button id="retry" class="gew-button" type="button">Retry loading</button>
+          </div>
+          <div id="empty-state" class="gew-state" hidden>
+            <h3>No examples match</h3>
+            <p>Try another search, choose a different category, or reset the filters.</p>
+            <button id="empty-reset" class="gew-button" type="button">Show all examples</button>
+          </div>
+          <ul id="catalog-list" class="gew-list" aria-label="Example software"></ul>
+          <noscript><p class="gew-state">Enable JavaScript to use this local catalog example. Its source and stylesheet remain available as ordinary files.</p></noscript>
+        </section>
+      </div>
+    </main>
+
+    <footer class="gew-footer">
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">An early-web catalog, with the useful parts kept.</h2>
+        <p>Search stays visible. Items share a consistent row. Details open where you are. There are no accounts, purchases, ratings, or invented popularity figures. Downloaded files are clearly marked example manifests, not software installers.</p>
+      </section>
+      <details id="states" class="gew-state-inspector">
+        <summary>Inspect loading and error states</summary>
+        <p>These controls change only this local example. Reload displays a brief loading state; the error has a working retry. Saved items are preserved.</p>
+        <div class="gew-row-actions">
+          <button id="reload" class="gew-button" type="button">Reload examples</button>
+          <button id="simulate-error" class="gew-button" type="button">Show example error</button>
+        </div>
+      </details>
+    </footer>
+  </div>
+  <p id="announcement" class="gew-visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <template id="item-template">
+    <li class="gew-item">
+      <div class="gew-thumbnail" aria-hidden="true">
+        <svg viewBox="0 0 104 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="17.5" y="13.5" width="69" height="45" stroke="#55554f" fill="white"/>
+          <path d="M18 23.5H86" stroke="#85857c"/>
+          <path d="M24 18.5H43" stroke="#0033a0" stroke-width="2"/>
+          <path class="gew-icon-detail" d="M25 44L38 33L50 47L62 30L78 39" stroke="#0033a0" stroke-width="2"/>
+        </svg>
+        <span class="item-id"></span>
+      </div>
+      <div class="gew-item-body">
+        <div class="gew-item-heading"><h3 class="item-name"></h3><span class="gew-category"></span></div>
+        <p class="gew-description"></p>
+        <dl class="gew-metadata">
+          <div><dt>Input:</dt><dd class="item-input"></dd></div>
+          <div><dt>Output:</dt><dd class="item-output"></dd></div>
+        </dl>
+        <div class="gew-row-actions"><button class="gew-button item-save" type="button" aria-pressed="false">Save item</button></div>
+        <details class="gew-details">
+          <summary>View details</summary>
+          <div class="gew-detail-inner">
+            <p class="item-detail"></p>
+            <p class="gew-small">Fictional example. The download is a JSON description of this entry.</p>
+            <button class="gew-button item-download" type="button">Download example manifest</button>
+          </div>
+        </details>
+      </div>
+    </li>
+  </template>
+
+  <script>
+    'use strict';
+    const EXAMPLES = Object.freeze([
+      {id: 'EX-001', name: 'Frame cutter', category: 'Utilities', input: 'Image', output: 'PNG', purpose: 'Crop a sequence of consistent frames from a source image.', detail: 'An example utility for specifying a frame rectangle once and applying it to a set of images. A real implementation would show the crop before export.', shape: 'M27 29V50H76M33 26H72V46H81'},
+      {id: 'EX-002', name: 'Waveform viewer', category: 'Research', input: 'CSV', output: 'SVG', purpose: 'Inspect a sampled signal and keep its units visible.', detail: 'An example research tool for plotting a local data file. A real implementation would preserve axis units, input provenance, and the selected range.', shape: 'M24 42H32L38 29L46 51L54 34L61 46L68 38H79'},
+      {id: 'EX-003', name: 'Sequence renderer', category: 'Media', input: 'JSON', output: 'MP4', purpose: 'Turn an ordered scene description into a render queue.', detail: 'An example media workflow with input validation, a queue, per-item progress, and a completed-output list. A real implementation would expose failed items for retry.', shape: 'M25 30H39V48H25ZM45 30H59V48H45ZM65 30H79V48H65Z'},
+      {id: 'EX-004', name: 'Bench log', category: 'Research', input: 'Notes', output: 'CSV', purpose: 'Keep measurements, observations, and test conditions together.', detail: 'An example notebook for structured bench records. A real implementation would store the original values and separate measured data from interpretation.', shape: 'M25 31H32M38 31H78M25 40H32M38 40H78M25 49H32M38 49H65'},
+      {id: 'EX-005', name: 'Document index', category: 'Utilities', input: 'Text', output: 'HTML', purpose: 'Make a small local collection searchable and easy to browse.', detail: 'An example indexer for documents. A real implementation would expose file names, useful excerpts, and direct links without inventing relevance or freshness data.', shape: 'M29 28H58V51H29ZM36 34H51M36 40H51M66 34H77M66 41H77M66 48H77'},
+      {id: 'EX-006', name: 'Palette utility', category: 'Media', input: 'Colors', output: 'CSS', purpose: 'Review a small set of interface colors and export named tokens.', detail: 'An example palette tool for assigning semantic roles and checking foreground/background pairs. A real implementation would show contrast results from the actual colors.', shape: 'M25 31H39V48H25ZM45 31H59V48H45ZM65 31H79V48H65Z'}
+    ]);
+    const $ = (selector) => document.querySelector(selector);
+    const list = $('#catalog-list');
+    const saved = new Set();
+    let phase = 'ready';
+    let searchTimer;
+    let loadTimer;
+    let announceTimer;
+
+    function announce(message) {
+      clearTimeout(announceTimer);
+      announceTimer = setTimeout(() => { $('#announcement').textContent = message; }, 100);
+    }
+
+    function filteredExamples() {
+      const query = $('#query').value.trim().toLocaleLowerCase();
+      const category = $('input[name="category"]:checked').value;
+      const sort = $('#sort').value;
+      return EXAMPLES.filter(item =>
+        (category === 'all' || item.category === category) &&
+        (!$('#saved-only').checked || saved.has(item.id)) &&
+        [item.name, item.category, item.input, item.output, item.purpose].join(' ').toLocaleLowerCase().includes(query)
+      ).sort((a, b) => sort === 'number' ? a.id.localeCompare(b.id) :
+        sort === 'category' ? a.category.localeCompare(b.category) || a.name.localeCompare(b.name) :
+        a.name.localeCompare(b.name));
+    }
+
+    function render(shouldAnnounce = true) {
+      const openIds = new Set([...list.querySelectorAll('details[open]')].map(detail => detail.dataset.id));
+      const items = filteredExamples();
+      const fragment = document.createDocumentFragment();
+      for (const item of items) {
+        const row = $('#item-template').content.cloneNode(true);
+        row.querySelector('.item-id').textContent = item.id;
+        row.querySelector('.item-name').textContent = item.name;
+        row.querySelector('.gew-category').textContent = item.category;
+        row.querySelector('.gew-description').textContent = item.purpose;
+        row.querySelector('.item-input').textContent = item.input;
+        row.querySelector('.item-output').textContent = item.output;
+        row.querySelector('.item-detail').textContent = item.detail;
+        row.querySelector('.gew-icon-detail').setAttribute('d', item.shape);
+        const saveButton = row.querySelector('.item-save');
+        saveButton.dataset.save = item.id;
+        saveButton.textContent = saved.has(item.id) ? 'Saved' : 'Save item';
+        saveButton.setAttribute('aria-pressed', String(saved.has(item.id)));
+        saveButton.setAttribute('aria-label', `${saved.has(item.id) ? 'Unsave' : 'Save'} ${item.name}`);
+        row.querySelector('.item-download').dataset.download = item.id;
+        const detail = row.querySelector('details');
+        detail.dataset.id = item.id;
+        detail.open = openIds.has(item.id);
+        detail.querySelector('summary').setAttribute('aria-label', `View details for ${item.name}`);
+        fragment.append(row);
+      }
+      list.replaceChildren(fragment);
+      list.hidden = phase !== 'ready';
+      $('#busy-state').hidden = phase !== 'loading';
+      $('#error-state').hidden = phase !== 'error';
+      $('#empty-state').hidden = phase !== 'ready' || items.length > 0;
+      $('#results').setAttribute('aria-busy', String(phase === 'loading'));
+      const countText = `${items.length} example ${items.length === 1 ? 'tool' : 'tools'}`;
+      $('#result-count').textContent = phase === 'ready' ? countText : phase === 'loading' ? 'Loading examples…' : 'Catalog unavailable';
+      $('#saved-label').textContent = `Saved only (${saved.size})`;
+      $('#export-saved').disabled = saved.size === 0;
+      $('#export-help').textContent = saved.size ? `${saved.size} saved ${saved.size === 1 ? 'example' : 'examples'} ready to export as JSON.` : 'Save an example to enable a JSON export.';
+      for (const control of document.querySelectorAll('#search-form input, #search-form button, #category-filters input, #saved-only, #sort, #reset-filters, #reload, #simulate-error')) {
+        control.disabled = phase === 'loading';
+      }
+      if (shouldAnnounce) announce(phase === 'ready' ? `${countText} shown.` : phase === 'loading' ? 'Loading local example catalog.' : 'Simulated catalog error. Retry loading is available.');
+    }
+
+    function resetFilters() {
+      clearTimeout(searchTimer);
+      $('#query').value = '';
+      $('input[name="category"][value="all"]').checked = true;
+      $('#saved-only').checked = false;
+      $('#sort').value = 'name';
+      render();
+      $('#query').focus();
+    }
+
+    function reloadExamples() {
+      clearTimeout(loadTimer);
+      phase = 'loading';
+      render();
+      loadTimer = setTimeout(() => { phase = 'ready'; render(); $('#query').focus(); }, 450);
+    }
+
+    function downloadExamples(items, filename) {
+      const payload = {example: true, description: 'Fictional Goosnav interface specimen; not a software installer.', items: items.map(({shape, ...item}) => item)};
+      const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2) + '\n'], {type: 'application/json'}));
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = filename;
+      document.body.append(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      announce(`Downloaded ${items.length} example ${items.length === 1 ? 'manifest' : 'manifests'}.`);
+    }
+
+    $('#search-form').addEventListener('submit', event => { event.preventDefault(); clearTimeout(searchTimer); render(); });
+    $('#query').addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(render, 180); });
+    $('#category-filters').addEventListener('change', () => render());
+    $('#saved-only').addEventListener('change', () => render());
+    $('#sort').addEventListener('change', () => render());
+    $('#reset-filters').addEventListener('click', resetFilters);
+    $('#empty-reset').addEventListener('click', resetFilters);
+    $('#reload').addEventListener('click', reloadExamples);
+    $('#retry').addEventListener('click', reloadExamples);
+    $('#simulate-error').addEventListener('click', () => { clearTimeout(loadTimer); phase = 'error'; render(); $('#retry').focus(); });
+    $('#export-saved').addEventListener('click', () => downloadExamples(EXAMPLES.filter(item => saved.has(item.id)), 'goosnav-example-selection.json'));
+    list.addEventListener('click', event => {
+      const saveButton = event.target.closest('button[data-save]');
+      if (saveButton) {
+        const id = saveButton.dataset.save;
+        saved.has(id) ? saved.delete(id) : saved.add(id);
+        render(false);
+        const replacement = list.querySelector(`button[data-save="${id}"]`) || list.querySelector('button[data-save]') || $('#saved-only');
+        replacement.focus();
+        announce(`${EXAMPLES.find(item => item.id === id).name} ${saved.has(id) ? 'saved' : 'removed from selection'}. ${saved.size} saved.`);
+      }
+      const downloadButton = event.target.closest('button[data-download]');
+      if (downloadButton) {
+        const item = EXAMPLES.find(entry => entry.id === downloadButton.dataset.download);
+        downloadExamples([item], `${item.id.toLowerCase()}-example-manifest.json`);
+      }
+    });
+    render(false);
+  </script>
+</body>
+</html>

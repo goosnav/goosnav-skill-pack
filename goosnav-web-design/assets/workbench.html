@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert a plain text list into a clean JSON array. A local Goosnav utility and interface specimen.">
+  <title>List to JSON — Goosnav Labs</title>
+  <link rel="stylesheet" href="goosnav.css">
+  <script src="workbench.js" defer></script>
+</head>
+<body class="goosnav-ui">
+  <a class="gn-skip" href="#workbench">Skip to converter</a>
+  <div class="gn-frame">
+    <header class="gn-header">
+      <span class="gn-wordmark">GOOSNAV LABS</span>
+      <span class="gn-kicker">Small, useful software</span>
+    </header>
+    <nav class="gn-nav" aria-label="This tool">
+      <a href="#workbench" aria-current="page">List converter</a>
+      <a href="#format">Input &amp; output</a>
+    </nav>
+    <main>
+      <section class="gn-intro" aria-labelledby="page-title">
+        <h1 id="page-title">LIST<br> TO JSON.</h1>
+        <div>
+          <span class="gn-tag">LOCAL TOOL</span>
+          <p class="gn-prose">Turn a list into something your software can use. Add one item per line, remove duplicates if needed, and download a JSON array.</p>
+        </div>
+      </section>
+      <noscript><p class="gn-error">Enable JavaScript to run this local converter. No files are uploaded.</p></noscript>
+      <div class="gn-workbench" id="workbench">
+        <section class="gn-pane" aria-labelledby="source-heading">
+          <div class="gn-section-head">
+            <h2 id="source-heading">01 / Source</h2>
+            <span class="gn-state" id="source-kind">No input</span>
+          </div>
+          <form id="list-form" novalidate>
+            <fieldset class="gn-controls" id="input-controls" disabled>
+              <legend class="gn-visually-hidden">List input and options</legend>
+              <div class="gn-field">
+                <label class="gn-label" for="list-file">Open a text file</label>
+                <input id="list-file" type="file" accept=".txt,text/plain" aria-describedby="file-help input-error">
+                <span class="gn-help" id="file-help">UTF-8 plain text, up to 256 KiB. Or paste your list below.</span>
+              </div>
+              <div class="gn-field">
+                <label class="gn-label" for="list-source">One item per line</label>
+                <textarea id="list-source" spellcheck="false" placeholder="Lab report&#10;Input fixture&#10;Board assembly" aria-describedby="source-help input-error"></textarea>
+                <span class="gn-help" id="source-help">Up to 5,000 nonempty lines; 1,000 characters per item.</span>
+              </div>
+              <div class="gn-options">
+                <label class="gn-check"><input id="remove-duplicates" type="checkbox" checked>Remove exact duplicates</label>
+                <label class="gn-check"><input id="sort-items" type="checkbox">Sort A–Z</label>
+              </div>
+              <div class="gn-actions">
+                <button class="gn-primary" type="submit" id="convert" disabled>Convert list</button>
+                <button type="button" id="sample">Use sample</button>
+                <button type="button" id="clear">Clear</button>
+              </div>
+            </fieldset>
+            <p class="gn-error" id="input-error" role="alert" hidden></p>
+            <p class="gn-status" id="status" role="status" aria-live="polite" aria-atomic="true">Add a list to begin.</p>
+          </form>
+        </section>
+        <section class="gn-pane" id="result-region" aria-labelledby="result-heading">
+          <div class="gn-section-head">
+            <h2 id="result-heading" tabindex="-1">02 / Result</h2>
+            <span class="gn-state" id="result-state" data-state="empty">Empty</span>
+          </div>
+          <dl class="gn-metrics">
+            <div><dt>Input lines</dt><dd id="input-count">0</dd></div>
+            <div><dt>Output items</dt><dd id="output-count">—</dd></div>
+            <div><dt>JSON bytes</dt><dd id="output-bytes">—</dd></div>
+          </dl>
+          <div class="gn-output">
+            <div class="gn-empty" id="empty-result">
+              <strong>Your result goes here.</strong>
+              <p class="gn-prose">Start with a text file, paste a list, or use the sample to try the tool.</p>
+            </div>
+            <pre id="json-preview" tabindex="0" aria-label="Generated JSON" hidden></pre>
+          </div>
+          <div class="gn-output-actions">
+            <button type="button" id="download" disabled>Download JSON</button>
+            <span id="download-note">Convert a list to enable download.</span>
+          </div>
+        </section>
+      </div>
+      <section class="gn-format" id="format" aria-labelledby="format-heading">
+        <h2 id="format-heading">Input &amp; output</h2>
+        <p>Each nonempty line becomes one string. Leading and trailing spaces are removed; internal spaces and punctuation stay intact. Duplicate matching is case-sensitive. The download is a UTF-8 JSON array, ready for a script or another tool. Editing your source or options clears the previous result.</p>
+      </section>
+    </main>
+    <footer class="gn-footer">
+      <span>Goosnav interface specimen · Functional local utility</span>
+      <span>Your file stays in this browser.</span>
+    </footer>
+  </div>
+</body>
+</html>

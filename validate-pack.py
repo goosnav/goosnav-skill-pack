@@ -13,6 +13,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 REQUIRED_PRIMARY_SKILLS = {
     "goosnav-codebase-upgrade",
+    "goosnav-web-design",
+    "goosnav-early-web-design",
 }
 LEGACY_HERMES_SKILLS = {
     "goosnav-mvp-delivery",

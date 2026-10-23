@@ -30,3 +30,11 @@ Skill structure validation passed. An independent read-only application exercise
 ## Pack expansion checks (2026-09-11)
 
 Six independent HTML/CSS template pairs, eight SVG primitives, and an asset selector guide were added. All HTML/CSS/Markdown resource links resolved; SVG XML parsed. The new skill passed the inspected Goosnav pack validator's per-skill checks. Bash install and reinstall into an isolated repository with spaces preserved every skill asset and an unrelated skill; root, missing and source-nested destinations were rejected. Bash/macOS wrapper syntax passed; PowerShell received structural checks only. An independent read-only exercise selected different layouts for a whitepaper, recorded-sensor inspector and hardware shop. Its photo-overlay finding was corrected in the catalog template. No new browser-rendering pass or Windows/macOS runtime test is claimed.
+
+## Product workflow checks (2026-10-23)
+
+The working JSON inspector passed local Chromium checks for empty and invalid input, objects/arrays/primitives, source-derived size/type/count, exact-source download, edit invalidation, file opening, oversized-file refusal, stale read protection, and reset. Browser-computed primary hover colors remained readable across all four presets; the disabled primary's default text/surface contrast measured 8.73:1. This found and corrected an existing dark-on-dark primary-hover cascade defect.
+
+Desktop (1440 px) and mobile (390 px) screenshots were inspected. The inspector and existing stopwatch had no page overflow at tested narrow widths; all six structural recipes passed a 390 px overflow check. Effects-off, increased contrast, forced colors, and print token overrides were exercised through browser emulation. The existing stopwatch start/pause/reset still worked. No page errors or external HTTP requests occurred during these checks. Resource links, JS syntax, standard skill validation, and preset token contrast checks passed.
+
+These checks validate the bundled examples and shared primitives. They do not certify every future app, untested browsers, OS-specific installers, or contrast after arbitrary custom colors and overlays. Run the product-specific visual gate when applying the skill.

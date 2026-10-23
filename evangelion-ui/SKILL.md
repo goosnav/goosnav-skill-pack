@@ -12,13 +12,15 @@ Create interfaces that plausibly belong on a classic Evangelion operations displ
 1. Inspect the existing framework, routes, controls, content, data sources, and brand requirements. Preserve working behavior. Use the project's stack; do not require React, a backend, shaders, or external services solely for styling.
 2. Read [visual-language.md](references/visual-language.md) and inspect at least the composite reference plus one relevant close-up in `references/screens/`. For GIFs, inspect representative frames if image tools permit. Read [sources.md](references/sources.md) for provenance and broader screen families. Do not require network access to use this skill.
 3. Select one dominant screen family suited to the task: operations, analytical instrument, approval network, resource/timer, or editorial dossier. State the intended hierarchy and palette briefly, then implement. Do not turn every product into a monitoring dashboard.
-4. Read [implementation.md](references/implementation.md). Reuse/adapt `assets/evangelion.css` and `assets/noise.svg` for web implementations; translate the same tokens into native toolkit styles for native apps. `assets/specimen.html` is a functioning display-settings and stopwatch specimen, not a template that dictates product layout.
+4. Read [implementation.md](references/implementation.md). Reuse/adapt `assets/evangelion.css` and `assets/noise.svg` for web implementations; translate the same tokens into native toolkit styles for native apps. Use `assets/specimen.html` for display settings/timing and `assets/inspector.html` for a working upload/edit/check/export flow. Both run locally; choose the task's structure rather than copying a specimen wholesale.
 5. Build one complete primary view first. Establish its typography, spacing, panel rules, states, and analog treatment, then carry those components across the requested views. Avoid a collection of individually art-directed inconsistent pages.
 6. Render and inspect using [quality-gate.md](references/quality-gate.md); correct visible failures before delivering. Report concrete checks and remaining limits. If screenshots cannot be produced, say visual validation is incomplete rather than implying it passed.
 
 ## Choose and compose variations
 
 Read [variations.md](references/variations.md) before choosing a layout. Use the six independent CSS/HTML recipes in `assets/templates/` and eight data-free SVG primitives in `assets/graphics/` as a composable library. Choose structure from the task, not from the default palette. Adapt or create additional layouts when needed; never shoehorn every app into the original stopwatch specimen, a three-column dashboard, or a three-node MAGI arrangement. Keep shared tokens consistent across distinct page types.
+
+For Goosnav products, read [product-integration.md](references/product-integration.md). Keep the product's real identity and plain-language workflow while applying this instrument language. Select one dominant visual skill per surface; do not stack Evangelion, early-web chrome, and the core Goosnav theme indiscriminately.
 
 ## Essential visual invariants
 

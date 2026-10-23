@@ -25,6 +25,16 @@ This skill owns the *design decisions*. It produces real CSS you can drop into a
 depend on a particular framework — the same type scale, palette, and spacing system express fine in
 plain CSS, Tailwind, or CSS-in-JS.
 
+## Respect an explicit design system
+
+When a named brand or style skill is selected, let it own the actual visual language. Use
+`goosnav-web-design` for core Goosnav software, `goosnav-early-web-design` for its refined
+early-internet variant, and `evangelion-ui` when that instrument aesthetic is requested.
+Apply this skill as a quality review without blending their skins. The advice below about
+tinted neutrals, type pairings, and accent counts is a starting heuristic: deliberate pure
+white/black, Helvetica/Times, semantic primary colors, or a coherent retro treatment can be
+the correct supplied identity. Preserve that identity and improve its execution.
+
 ## The anti-slop thesis
 
 Most AI-generated (and template-generated) web design fails the same way: it reaches for the safest
@@ -153,7 +163,7 @@ Before calling a design done, confirm:
 - [ ] I can state the design direction in one sentence, and the page obviously serves it.
 - [ ] Headings and body use a real type scale (distinct, intentional steps), not near-uniform sizes.
 - [ ] Body measure is ~60-75 characters; body text passes 4.5:1 contrast.
-- [ ] The palette is one neutral family + ≤2 accents; neutrals are tinted, not pure gray.
+- [ ] The palette has clear roles and sufficient contrast; follow the supplied brand's neutral and accent rules, or use one neutral family with restrained accents when none exists.
 - [ ] All spacing comes from one scale; groups use proximity to show relationship.
 - [ ] There is exactly one primary focal point per view.
 - [ ] Radius, border, and shadow are consistent across components.

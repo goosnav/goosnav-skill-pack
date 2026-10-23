@@ -12,6 +12,8 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `goosnav-modular-coding-method` | Code must be built one contracted, testbenched black-box module at a time, with human sign-off between bricks and a growing assembly proven at every rung. |
 | `nasa-v-model` | An idea must become a complete, traceable specification suite (ConOps → requirements → architecture → detailed design → V&V, with a traceability matrix) before anyone writes code. |
 | `aesthetic-web-design` | A web page or app must look genuinely good and intentional — not generic AI/template "slop." Owns art direction, type, color, spacing, and polish. |
+| `goosnav-web-design` | A Goosnav Labs site, tool, or workbench needs the core editorial/technical style: strong type, paper and ink, crisp rules, and purposeful primary-color accents. |
+| `goosnav-early-web-design` | A Goosnav interface should echo early web catalogs or Windows XP controls, with refined proportions, meaningful color, and modern interaction quality. |
 | `minimal-html-web-design` | A page should be built from plain, semantic HTML with little or no CSS — highly functional, fast, accessible, and still sensibly organized. |
 | `evangelion-ui` | An interface should be art-directed in the classic Neon Genesis Evangelion instrument language — NERV/MAGI panels, analog CRT rendering, functional information design. |
 
@@ -26,6 +28,24 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `goosnav-research-simulation` | A research, agent, society, or simulation product needs a deterministic constrained core, replay artifacts, and explicit fictional/safety boundaries. |
 
 Use the narrowest skill that owns the immediate outcome. Combine skills through their handoff artifacts: for example, MVP Delivery can hand a candidate to Parent Verification, Local-First Workbench can hand a product to Software Productization, and Revenue Validation can consume the proof artifact from either. Modular Coding Method consumes a `nasa-v-model` architecture as its module map and hands finished subsystems to Codebase Upgrade or Software Productization.
+
+## Choose a visual direction
+
+![Bundled specimens: Goosnav core, refined early web, and Evangelion instruments](docs/design-previews.png)
+
+Choose one primary design skill for a screen. Keep its typography, geometry, and color roles consistent across the product. The general `aesthetic-web-design` skill can support a quality review; explicit brand rules take precedence over its generic palette and type heuristics.
+
+| Direction | Character | Example request | Working specimen |
+| --- | --- | --- | --- |
+| **Goosnav core** | Editorial engineering: strong sans headings, Times prose, white space, ruled task regions, square controls; selective red, blue, and yellow. | `Use $goosnav-web-design to redesign this app in the Goosnav Labs style.` | [Local workbench](goosnav-web-design/assets/workbench.html) |
+| **Goosnav early web** | Searchable catalogs, visible categories, compact navigation, restrained blue title bars, inset fields, and shallow bevels. Choose a coherent early-web or desktop family for the task. | `Use $goosnav-early-web-design for a refined early-internet software catalog.` | [Searchable catalog](goosnav-early-web-design/assets/catalog.html) |
+| **Evangelion instruments** | Condensed instrument type, precise framing, semantic luminous color, optional CRT texture, and real product state. Select explicitly for this direction. | `Use $evangelion-ui to style this JSON workbench with subtle analog effects.` | [JSON inspector](evangelion-ui/assets/inspector.html) and [screen recipes](evangelion-ui/assets/templates/index.html) |
+
+The two Goosnav skills are independently installable. Their source notes distinguish current Labs/3D Comic Engine implementation, documented brand rules, and the owner's October 23, 2026 extension for controlled primary-color accents and refined early-web chrome. Comics artwork, lettering, and assigned product colors keep their own rules. Evangelion remains an optional direction rather than the default Goosnav identity.
+
+To inspect the specimens, open their HTML files from your local checkout in a browser. They include their local CSS/JavaScript resources and need no build step. GitHub's file view displays the source. Install from the source folders to get the current skill, references, and assets.
+
+The former embedded `evangelion-ui.zip` snapshot has been retired so there is one current version of that skill. The folder and its installers include the updated application example.
 
 ## Layout
 
@@ -45,6 +65,8 @@ goosnav-skill-pack/
 ├── goosnav-modular-coding-method/
 ├── nasa-v-model/
 ├── aesthetic-web-design/
+├── goosnav-web-design/
+├── goosnav-early-web-design/
 ├── minimal-html-web-design/
 ├── evangelion-ui/
 └── extra-skills/

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Goosnav Web Design"
+  short_description: "Precise Goosnav interfaces with primary-color accents"
+  default_prompt: "Use $goosnav-web-design to build a clear, distinctive Goosnav software interface with selective primary-color accents."

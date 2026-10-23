@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>JSON Inspector / Evangelion UI</title>
+  <link rel="stylesheet" href="evangelion.css">
+  <link rel="stylesheet" href="inspector.css">
+  <script src="inspector.js" defer></script>
+</head>
+<body class="eva" data-palette="classic-amber" data-analog="subtle">
+  <main class="eva-content">
+    <header class="eva-header eva-screen inspector-header">
+      <div>
+        <p class="eva-label">Interface specimen / Local file utility</p>
+        <h1 class="eva-title eva-emission">JSON<br>Inspector</h1>
+      </div>
+      <p class="inspector-intro">Check the syntax of your JSON.<br>Inspect the result. Download the checked source.</p>
+    </header>
+    <nav class="eva-nav" aria-label="Specimens">
+      <a href="inspector.html" aria-current="page">JSON inspector</a>
+      <a href="specimen.html">Display and timer</a>
+      <a href="templates/index.html">Layout library</a>
+    </nav>
+    <div class="inspector-layout">
+      <section class="eva-panel eva-stack" aria-labelledby="source-title">
+        <div class="eva-panel-title">
+          <span class="eva-plate" aria-hidden="true">01</span>
+          <h2 class="eva-heading" id="source-title">Source</h2>
+        </div>
+        <label class="eva-field" for="source-file">
+          <span>Open a JSON file</span>
+          <input id="source-file" type="file" accept=".json,application/json" aria-describedby="file-help">
+        </label>
+        <p id="file-help" class="eva-help">Up to 1 MiB. A readable file replaces the text below. Nothing is uploaded.</p>
+        <label class="eva-field" for="source">
+          <span>JSON source</span>
+          <textarea class="eva-code" id="source" rows="15" spellcheck="false" autocomplete="off" aria-invalid="false" aria-describedby="source-help source-error" placeholder="Paste JSON here, or open a file above."></textarea>
+        </label>
+        <p id="source-help" class="eva-help">Checking confirms JSON syntax only. It does not validate an application's schema.</p>
+        <p id="source-error" class="eva-field-error" role="alert"></p>
+        <div class="eva-controls">
+          <button id="check" class="eva-button-primary" type="button" disabled>Check JSON</button>
+          <button id="download" type="button" disabled>Download checked JSON</button>
+          <button id="clear" type="button" disabled>Clear</button>
+        </div>
+      </section>
+      <aside class="eva-stack" aria-labelledby="result-title">
+        <section class="eva-panel eva-stack">
+          <div class="eva-panel-title">
+            <span class="eva-plate" aria-hidden="true">02</span>
+            <h2 id="result-title" class="eva-heading">Inspection</h2>
+          </div>
+          <p><span id="status" class="eva-status" data-state="unknown" role="status" aria-live="polite" aria-atomic="true">No source</span></p>
+          <p id="empty" class="eva-empty">Open or paste JSON to begin. Results come from your source.</p>
+          <dl id="summary" class="inspector-summary" hidden>
+            <div><dt>UTF-8 size</dt><dd id="bytes">—</dd></div>
+            <div><dt>Top-level type</dt><dd id="kind">—</dd></div>
+            <div><dt id="entries-label">Top-level entries</dt><dd id="entries">—</dd></div>
+          </dl>
+          <p class="eva-help">Editing invalidates the previous result. Download preserves the exact checked text; it does not reformat or evaluate it.</p>
+        </section>
+        <section class="eva-panel eva-stack" aria-labelledby="display-title">
+          <h2 id="display-title" class="eva-heading">Display</h2>
+          <label class="eva-field" for="palette">Palette
+            <select id="palette">
+              <option value="classic-amber">Classic amber</option>
+              <option value="terminal-green">Terminal green</option>
+              <option value="ice-blue">Ice blue</option>
+              <option value="unit-purple">Unit purple</option>
+            </select>
+          </label>
+          <label class="eva-field" for="analog">Screen treatment
+            <select id="analog">
+              <option value="off">Off</option>
+              <option value="subtle" selected>Subtle</option>
+              <option value="cinematic">Cinematic</option>
+            </select>
+          </label>
+          <p class="eva-help">Texture stays in the title region. Source text and controls remain clear.</p>
+        </section>
+      </aside>
+    </div>
+    <footer class="eva-footer">Runs in this page. No account, network request, storage, or fabricated telemetry.</footer>
+    <noscript><p class="eva-alert">Enable JavaScript to check and download JSON. This specimen uses no server.</p></noscript>
+  </main>
+</body>
+</html>
