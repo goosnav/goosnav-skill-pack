@@ -16,10 +16,9 @@ description: >-
 
 ## What this is for
 
-Make web pages that look like a person with taste made them on purpose. The bar is not "clean" —
-clean is easy and forgettable. The bar is **intentional, coherent, and distinctive**: every choice
-looks deliberate, the whole thing hangs together as one system, and it doesn't look like the default
-output everyone else ships.
+Make deliberate, coherent interfaces. Elegant simplicity is a complete design direction.
+Distinctive work can come from proportion, typography, alignment, and useful content.
+More text, effects, or visual signatures do not make a page better.
 
 This skill owns the *design decisions*. It produces real CSS you can drop into any stack. It does not
 depend on a particular framework — the same type scale, palette, and spacing system express fine in
@@ -55,6 +54,15 @@ stop and reconsider:
 None of these are *illegal* — they're just what "no decision was made" looks like. Quality comes from
 the opposite: a chosen typeface with intent, a committed palette, a real spatial system, one clear
 focal point, and details that reward a second look.
+
+## Text is part of the interface
+
+For repeated-use tools, remove copy that explains what labels and layout already make clear.
+Avoid possessive headings, repeated breadcrumbs, duplicate status messages, generic taglines,
+and process narration above the actual work. Name the active object once. Put optional detail
+in context or Help; keep required labels, errors, format constraints, and sample-data disclosure.
+Before delivery, delete each line whose absence does not impair a decision or action.
+Judge the result by how directly users can work, not by how much text fills the layout.
 
 ## Workflow
 
@@ -166,6 +174,7 @@ Before calling a design done, confirm:
 - [ ] The palette has clear roles and sufficient contrast; follow the supplied brand's neutral and accent rules, or use one neutral family with restrained accents when none exists.
 - [ ] All spacing comes from one scale; groups use proximity to show relationship.
 - [ ] There is exactly one primary focal point per view.
+- [ ] Routine chrome contains no redundant headings, labels, instructions, or success narration.
 - [ ] Radius, border, and shadow are consistent across components.
 - [ ] Motion is fast, purposeful, and respects `prefers-reduced-motion`.
 - [ ] None of the anti-slop tells from `references/anti-slop.md` are present unintentionally.

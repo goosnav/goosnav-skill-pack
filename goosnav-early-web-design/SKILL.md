@@ -43,6 +43,14 @@ Read [pattern recipes](references/pattern-recipes.md) for component-level decisi
 - Use 1px structural rules, square panels, and at most 2-4px control corners.
 - Keep the interface calm enough that the actual work supplies its personality.
 
+## Keep the task ahead of the chrome
+
+Retro character does not require more labels. In working tools, name the active object once.
+Remove repeated titlebars, breadcrumbs, “Your…” headings, process narration, and permanent
+success panels when the result already shows completion. Keep controls and useful data in the
+first viewport. Put optional help in a disclosure; retain errors, required constraints, sample
+labels, and accessible names. Remove text that does not change a decision or action.
+
 ## Apply color deliberately
 
 Use blue for links, selected controls, and the principal action by default. Use red

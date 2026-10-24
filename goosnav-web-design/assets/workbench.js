@@ -64,8 +64,8 @@
     byId("empty-result").hidden = false;
     byId("output-count").textContent = "—";
     byId("output-bytes").textContent = "—";
-    byId("download-note").textContent = "Convert a list to enable download.";
-    resultState.textContent = source.value.trim() ? "Not converted" : "Empty";
+    byId("download-note").textContent = "";
+    resultState.textContent = "";
     resultState.dataset.state = "empty";
   }
   function refreshInput() {
@@ -164,7 +164,7 @@
       byId("empty-result").hidden = true;
       byId("output-count").textContent = result.items.length.toLocaleString();
       byId("output-bytes").textContent = result.bytes.toLocaleString();
-      resultState.textContent = "Ready";
+      resultState.textContent = "";
       resultState.dataset.state = "ready";
       byId("download-note").textContent = "goosnav-list.json";
       download.disabled = false;

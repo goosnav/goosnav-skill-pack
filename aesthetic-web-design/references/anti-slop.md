@@ -18,6 +18,8 @@ the fix, plus concrete starting points (typefaces, palettes, scale) that skip th
 | Everything centered | No grid, no tension | Left-align text blocks; use a grid; center only for deliberate emphasis |
 | Raw Tailwind `gray-*`/`blue-500` | The signature "untouched defaults" palette | Custom tinted neutral ramp + chosen accent |
 | Vague hero copy ("Build faster. Ship smarter.") | Says nothing, could be any product | Specific, concrete copy; the words are part of the design |
+| Redundant workspace copy (“Your list,” “Everything stays together,” repeated breadcrumbs) | Makes users read what the interface already shows | Delete it; use the active object name, direct controls, and actual results |
+| Persistent “complete” panels beside finished results | Old process detail displaces the work | Hide routine completion; retain failures and optional activity history |
 | Icon + heading + paragraph, ×N, forever | One rhythm repeated flattens the page | Alternate section shapes; break the pattern intentionally |
 
 ## Non-generic typeface pairings

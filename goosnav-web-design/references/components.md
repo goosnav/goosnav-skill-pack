@@ -5,7 +5,8 @@
 Use a compact identity row, a ruled navigation row when the site has multiple destinations,
 and a bounded main region. Keep the identity legible as text. An icon can support an existing
 approved mark, but must not substitute an invented mascot or unrelated engineering symbol.
-Use a compact footer for useful links, version, or context that actually exists.
+Omit the footer unless it provides useful links or information absent from the work area.
+Name the active object once; do not repeat it in a breadcrumb, kicker, title, and panel heading.
 
 For a marketing/editorial page, use one dominant heading and one meaningful image or
 interactive artifact. For a workbench, let the active job occupy most of the screen. Avoid
@@ -29,7 +30,8 @@ Pair destructive controls with explicit verbs and the affected object. Keep hove
 focus, active/pressed, disabled, and busy states visibly distinct. Do not imply progress by
 making every disabled control use a wait cursor.
 
-Place persistent labels above fields. Put examples and format constraints in helper text.
+Place persistent labels above fields. Add helper text only for a likely ambiguity or required constraint.
+Do not narrate obvious controls or repeat the same information in headings and captions.
 Associate error text with its field, set `aria-invalid` on invalid input, and retain user
 input. Treat conditional questions as fields within the form, not a new ornamental card.
 
@@ -55,7 +57,7 @@ labels and values across sibling groups.
 | Empty | What belongs here | A direct way to add/import it |
 | Invalid | The specific failed requirement | The correction and retained input |
 | Busy | The current operation | Disabled conflicting actions; cancel if supported |
-| Success | What completed and the actual result | Open/download/continue action |
+| Success | The actual result; a brief announcement if needed | Open/download/continue action without a permanent success panel |
 | Partial | Which items worked and failed | Per-item recovery without losing successes |
 | Unavailable | What is missing or disconnected | A truthful path to restore availability |
 

@@ -37,6 +37,14 @@ Two things the browser already does for free, that most sites reimplement badly:
 
 So the whole method is: **pick the right element, put it in the right place in the source, and stop.**
 
+## Minimize the content as well as the code
+
+Plain HTML can still contain redundant copy. Keep the subject, real content, necessary labels,
+and a direct next action. Remove repeated headings, possessive labels, obvious instructions,
+and decorative footers. Let semantic structure explain the page. Use optional details for
+secondary instructions; retain required constraints, errors, and accessible control names.
+A footer belongs only when it contains useful information or links.
+
 ## Workflow
 
 ### 1. Write the document outline first
@@ -161,7 +169,7 @@ truly needs art direction, that's the `aesthetic-web-design` skill instead.
 ## Verification checklist
 
 - [ ] Valid `<!doctype html>`, `lang`, `charset`, `viewport`, and a specific `<title>`.
-- [ ] Landmarks present: `<header>`, `<main>` (once), `<footer>`; `<nav>` around navigation.
+- [ ] Use `<main>` once and the landmarks the content needs; `<nav>` wraps navigation. Omit an empty or decorative footer.
 - [ ] Exactly one `<h1>`; heading levels nest without skipping.
 - [ ] Every interactive/data need uses its native element (details, table, form, button, dl…).
 - [ ] Every form control has a `<label>`; every `<img>` has `alt`.

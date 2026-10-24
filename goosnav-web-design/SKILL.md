@@ -19,6 +19,21 @@ and an economical structure. Let the actual work provide the character.
 For a small request, make the smallest coherent change. For a new screen, finish one complete
 input-to-result path before adding secondary modules.
 
+## Remove text before adding style
+
+For working tools, keep copy that identifies an object, labels an action, or prevents a likely mistake.
+Let layout, controls, and real content explain the workflow.
+
+- Name the active object once. Remove repeated breadcrumbs, section names, and possessive headings such as “Your lead list.”
+- Remove taglines, obvious instructions, numbered process summaries, and paragraphs that narrate visible controls.
+- Keep routine success quiet. A populated table or enabled download can show completion without a permanent status panel.
+- Put advanced settings and technical details behind a relevant disclosure or Help. Do not add a tooltip to justify every element.
+- Label sample data once. Keep errors, stale-result warnings, required format constraints, and accessible control names.
+- Inspect the first viewport. The user should reach useful controls and data without scrolling past explanatory chrome.
+
+Before delivery, read every visible line. If its removal preserves meaning and task completion, remove it.
+Do not replace deleted filler with shorter filler. Requested editorial content and necessary instructions still belong.
+
 ## Establish the visual foundation
 
 | Element | Default | Adaptation |
@@ -38,8 +53,8 @@ Let a technical drawing, actual product, editor, or output preview carry visual 
 Honor the existing project's tested font fallback order; do not break Unicode symbols to
 enforce a particular Helvetica/Arial ordering.
 
-Do not confuse confidence with gigantic type everywhere. In a repeated-use tool, shorten the
-intro and put useful controls above the fold.
+In a repeated-use tool, omit the introduction when the controls already explain the task.
+Use a compact object title and put useful controls and data above the fold.
 
 ## Add color where it earns its place
 
@@ -128,4 +143,5 @@ rendering or trying the resulting interface.
 
 Require a recognizable typographic identity, one obvious primary action, restrained meaningful
 color, aligned structure, readable content, functioning controls, and a complete result state.
+Complete the text-removal pass as well as visual and functional checks.
 Remove anything that creates more visual work than functional value.
