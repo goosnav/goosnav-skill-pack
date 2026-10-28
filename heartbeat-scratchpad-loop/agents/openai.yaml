@@ -1,0 +1,4 @@
+interface:
+  display_name: "Heartbeat Scratchpad Loop"
+  short_description: "Run focused recurring tasks with compact working memory"
+  default_prompt: "Use $heartbeat-scratchpad-loop to set up a recurring task that advances one focused step, rewrites its compact working state, and stops when its objective is complete."

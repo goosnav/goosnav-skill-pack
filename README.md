@@ -10,6 +10,7 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `goosnav-mvp-delivery` | An idea must become a complete, launchable vertical slice with a shared core, GUI/CLI, fixtures, verifier, and proof. |
 | `goosnav-codebase-upgrade` | A partially working MVP needs adversarial health audits, specialist repairs, end-user/browser proof, security hardening, honest docs, and GitHub readiness. |
 | `goosnav-modular-coding-method` | Code must be built one contracted, testbenched black-box module at a time, with human sign-off between bricks and a growing assembly proven at every rung. |
+| `heartbeat-scratchpad-loop` | A monitor, recurring check-in, or long-running task should wake in a thread, advance one focused step, rewrite compact working memory, and stop at an explicit condition. |
 | `nasa-v-model` | An idea must become a complete, traceable specification suite (ConOps → requirements → architecture → detailed design → V&V, with a traceability matrix) before anyone writes code. |
 | `aesthetic-web-design` | A web page or app must look genuinely good and intentional — not generic AI/template "slop." Owns art direction, type, color, spacing, and polish. |
 | `goosnav-web-design` | A Goosnav Labs site, tool, or workbench needs the core editorial/technical style: strong type, paper and ink, crisp rules, and purposeful primary-color accents. |
@@ -63,6 +64,7 @@ goosnav-skill-pack/
 ├── goosnav-mvp-delivery/
 ├── goosnav-codebase-upgrade/
 ├── goosnav-modular-coding-method/
+├── heartbeat-scratchpad-loop/
 ├── nasa-v-model/
 ├── aesthetic-web-design/
 ├── goosnav-web-design/
