@@ -9,6 +9,7 @@ Reusable Agent Skills for software engineers and founder-operators who need work
 | `goosnav-software-productization` | A working local product needs gated cross-platform distribution, later SaaS/mobile expansion, or the existing M1a launcher protocol. |
 | `goosnav-mvp-delivery` | An idea must become a complete, launchable vertical slice with a shared core, GUI/CLI, fixtures, verifier, and proof. |
 | `goosnav-codebase-upgrade` | A partially working MVP needs adversarial health audits, specialist repairs, end-user/browser proof, security hardening, honest docs, and GitHub readiness. |
+| `goosnav-seo-optimization` | A website needs evidence-based technical and on-page SEO repairs, protected indexing controls, measured performance improvements, and a concrete Search Console handoff. |
 | `goosnav-modular-coding-method` | Code must be built one contracted, testbenched black-box module at a time, with human sign-off between bricks and a growing assembly proven at every rung. |
 | `heartbeat-scratchpad-loop` | A monitor, recurring check-in, or long-running task should wake in a thread, advance one focused step, rewrite compact working memory, and stop at an explicit condition. |
 | `nasa-v-model` | An idea must become a complete, traceable specification suite (ConOps → requirements → architecture → detailed design → V&V, with a traceability matrix) before anyone writes code. |
@@ -63,6 +64,7 @@ goosnav-skill-pack/
 ├── goosnav-software-productization/
 ├── goosnav-mvp-delivery/
 ├── goosnav-codebase-upgrade/
+├── goosnav-seo-optimization/
 ├── goosnav-modular-coding-method/
 ├── heartbeat-scratchpad-loop/
 ├── nasa-v-model/

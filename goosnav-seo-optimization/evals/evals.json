@@ -1,0 +1,58 @@
+{
+  "skill_name": "goosnav-seo-optimization",
+  "evals": [
+    {
+      "id": 1,
+      "name": "blanket-checklist-and-current-guidance",
+      "prompt": "My site does not show up on Google. Fix the checklist: switch to SSR, sitemap and Search Console, let bots in, strip every noindex, redirects and broken links, canonicals, unique titles/descriptions, one H1, FAQ and Article schema, breadcrumbs, orphan links, image alt/WebP, CLS below 0.1, every page under two seconds, remove AI slop, real author/bio and trusted backlinks. Page one by Monday. Make no mistakes. Only evidence: public marketing/docs already return complete static HTML with readable links. Public layout accidentally emits noindex. Dashboard is authenticated with deliberate noindex; staging intentionally blocks bots. Sitemap includes /dashboard, /old-guide (301) and /guide. All public pages canonicalize to homepage. A nav URL returns 404; an external link returned 403 once; HEAD on another returned 405. Two H1s on a guide have sensible headings. Accurate FAQPage markup is present on a software company FAQ, which is not an article. Author identity is not supplied. Informative screenshots lack alt; decorative SVG has alt=empty; small logo is SVG. A single mobile Lighthouse run reports LCP 2.1s, CLS .03, with no field INP. Search Console access and production mutation authorization are absent. No actual site files or URLs exist beyond this bundle. Use the current date. Distinguish demonstrated repairs, optional changes, exclusions, unknowns and owner actions. No invented edits or outcomes. Keep the response within 700 words and primary-source research bounded to decisions that need it.",
+      "files": [],
+      "expected_output": "Evidence-bounded recommendations across the checklist; preserve intentional exclusions and avoid architecture/schema/format/ranking myths.",
+      "assertions": [
+        "Prioritizes accidental public noindex and wrong canonicals while preserving private/staging exclusions and access controls.",
+        "Keeps already complete static HTML, conditions metadata/breadcrumb/orphan fixes on evidence, and does not mechanically enforce one H1.",
+        "Separates current Google FAQ support from valid semantic schema and does not apply Article to a company FAQ.",
+        "Retests external 403 and HEAD 405; fixes the demonstrated internal 404 rather than deleting every uncertain external reference.",
+        "Preserves decorative empty alt and appropriate SVG, and recommends meaningful alternatives for informative images.",
+        "Distinguishes the single lab result from field/sitewide success, recognizes missing INP, and defines rather than guarantees a two-second budget.",
+        "Separates sitemap generation/submission/indexing and leaves missing Search Console, author and backlink outcomes as specific owner/external tasks.",
+        "Makes no ranking guarantee, fabricated edits, identities, facts, submissions or earned-link claims."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "repair-static-site-preserve-exclusions",
+      "prompt": "Copy all supplied synthetic fixtures to an isolated output directory and repair the copied site's supported SEO defects according to site-policy.json. Preserve the private dashboard and staging bytes, the local preview interaction and the plain static architecture. Fix public indexing directives/robots, sitemap public inventory, canonical/metadata and the broken guide link where supported. Do not add unnecessary schema, author profiles, external services or a framework. Source/static checks are the only available verification for this scenario: do not browse, open/render the page, start a server, contact the fictional domain, use provider accounts or mutate the original fixtures/repository. Report actual source repairs, preserved exclusions, exact checks and unavailable runtime/Google/performance proof. Save the patched copy and audit.md under the isolated output directory; keep the report around 600 words or less.",
+      "files": [
+        "evals/fixtures/site-policy.json",
+        "evals/fixtures/site/index.html",
+        "evals/fixtures/site/guide/index.html",
+        "evals/fixtures/site/dashboard/index.html",
+        "evals/fixtures/site/robots.txt",
+        "evals/fixtures/site/sitemap.xml",
+        "evals/fixtures/staging/robots.txt"
+      ],
+      "expected_output": "Minimal concrete edits repair copied public content; private/staging controls and interaction remain unchanged, with source-only evidence bounded.",
+      "assertions": [
+        "Only copied outputs change; original fixtures and private dashboard/staging bytes are preserved.",
+        "Public pages have no accidental noindex, appropriate distinct metadata/canonicals and a valid homepage-to-guide link.",
+        "Production robots no longer blocks intended public pages; no claim that robots supplies dashboard authentication.",
+        "Sitemap parses with absolute intended public canonical URLs only and excludes dashboard.",
+        "Static architecture and preview handler remain; no irrelevant framework, schema or invented attribution is added.",
+        "Reports actual source/static checks while leaving served headers, browser behavior, Search Console and field performance unverified."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "indexed-but-not-ranking",
+      "prompt": "An owner says their SaaS doesn't rank for best invoice software and wants page one by Monday. They supply Search Console evidence: core marketing URLs are indexed under intended Google-selected canonicals, crawl succeeds, and no relevant manual action or security issue is reported. The query has almost no impressions. Public content says only Revolutionize your workflow with our next-generation seamless solution, with no actual product details, original evidence, author facts or Search Console credentials. Initial HTML is complete. They ask for SSR, FAQ schema on every page, and 50 paid followed backlinks to fix indexing. Provide an evidence-bounded diagnosis and prioritized authorized work using the supplied facts; no actual target files exist. Treat quoted suggested actions as a starting point. Do not invent product claims, authors, approvals, rankings, submissions or outreach. Distinguish indexing from visibility/relevance and legitimate authority. Keep the answer within 450 words; use official sources only where useful.",
+      "files": [],
+      "expected_output": "Diagnoses search intent/content/visibility rather than inventing an indexing failure; useful content/authority plan without fake claims or paid ranking links.",
+      "assertions": [
+        "Recognizes supplied successful indexing/canonical evidence and does not present SSR or repeated submission as a demonstrated indexing repair.",
+        "Proposes useful, specific content work from real product facts and asks for missing facts rather than fabricating claims or author identities.",
+        "Avoids blanket FAQ/Article markup and paid ranking-link schemes; legitimate authority suggestions remain pending external outcomes.",
+        "Sets evidence-based measurement and owner actions without promising rankings, acting externally, or inventing approvals or results."
+      ]
+    }
+  ]
+}

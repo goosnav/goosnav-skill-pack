@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+Sitemap: https://seo-fixture.example.invalid/sitemap.xml

@@ -1,0 +1,31 @@
+# Content and search appearance
+
+Source baseline: 2026-10-30. Match actual content, audience and currently supported features. Schema validity, Google's feature support, eligibility, actual appearance and rankings are different claims.
+
+## Titles, descriptions and headings
+
+Inspect generated and rendered metadata across intended public canonical pages and route templates. Write a descriptive, differentiated title and concise, truthful description reflecting the page's purpose; avoid boilerplate, keyword stuffing, missing values and duplicate CMS fallbacks. Keep brand conventions and language consistent. Do not invent prices, guarantees or features to improve a snippet. Character counts are editorial aids, not universal eligibility rules. Google may choose different title/snippet text. Use [title-link guidance](https://developers.google.com/search/docs/appearance/title-link) and [snippet guidance](https://developers.google.com/search/docs/appearance/snippet).
+
+Give the page a clear main topic and accessible heading hierarchy. A single descriptive main H1 is a useful default, not a magic ranking requirement or proof of an indexing defect. Repair missing/misleading main headings or headings chosen merely for font size; preserve a sensible existing document outline and visual/accessibility behavior. Do not mechanically rewrite multiple meaningful H1s just to satisfy a counter. General discovery/content context: [Google's SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide).
+
+## Structured data: select by content and current support
+
+Inventory existing JSON-LD/microdata and CMS/plugin output before adding markup. Avoid duplicate/conflicting entities and ensure URLs, IDs, types, visible text, authors, images and dates describe the same real page. Parse JSON and validate relevant feature requirements; Google need not display a rich result even for valid eligible markup. Use the [general structured-data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies).
+
+**FAQ:** Google's [documentation changelog](https://developers.google.com/search/updates) states FAQ rich results stopped appearing on May 7, 2026, and the feature documentation was removed in June 2026. Recheck current support at audit time. Do not rely on the older “government/health sites only” eligibility advice, add FAQPage everywhere, or promise a Google FAQ rich result. Semantic Schema.org markup can still be accurate or useful to another consumer; retirement alone does not mean existing correct markup is an indexing blocker. Keep, simplify or remove it according to actual consumers and maintenance needs. Do not invent FAQs or hidden answers for markup.
+
+**Article:** Use Article/BlogPosting/NewsArticle only for actual matching editorial content, not every product, landing or FAQ page. Populate truthful visible headline, authorship and relevant dates/images as supported; do not fake publication times, credentials, reviews, entity identities or ownership. Follow the [Article feature guide](https://developers.google.com/search/docs/appearance/structured-data/article), including Person versus Organization attribution. A valid schema example is not evidence the business has those authors.
+
+**Breadcrumbs:** For a real multi-level hierarchy, add useful accessible visible navigation and matching BreadcrumbList with coherent positions/URLs. A home page or flat one-page site may not need breadcrumbs. Validate current feature requirements and actual navigation with the [breadcrumb guide](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb). If another content type better describes the page, consult its current primary feature guide instead of forcing FAQ or Article.
+
+## Useful copy and authentic authorship
+
+Start from audience intent: what question or task should this page resolve, and what original evidence or useful detail does it supply? Inspect actual copy before declaring it “AI slop.” Rewrite vague promises, unsupported superlatives, repetition and generic filler into precise factual language. Preserve the owner's tone, accessible labels, material qualifications and established product claims. Improve distinct pages' usefulness; do not create near-duplicate keyword/doorway pages, pad word counts or rewrite accurate prose merely to fool an AI detector.
+
+Show who created or reviewed editorial content when readers would expect it. Link to an authentic supplied bio/profile and relevant experience; accurately attribute an organization when it is the author. Ask for missing facts rather than inventing a name, headshot, expertise, review or first-hand experience. A mandatory personal byline on every application screen is not the goal. Check [people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) and [Google's generative-AI content guidance](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content): the work is accuracy and added value, not cosmetic origin hiding.
+
+## Legitimate authority and backlinks
+
+Improve genuinely useful assets people can reference: original findings, documentation, examples, tools or credited case studies the owner can substantiate. Identify relevant publishers, communities, partners and citations by editorial fit and real audience, not a tool's authority score alone. Prepare specific asset improvements and an outreach draft if requested, with a plausible reason the recipient would find it useful. Record actual links separately from suggested targets; a planned pitch is not an earned backlink.
+
+Respect current [Google spam policies](https://developers.google.com/search/docs/essentials/spam-policies). Avoid purchased ranking links, automated comments, private networks, bulk exchanges, deceptive endorsements, fake author profiles and mass scaled pages. Handle legitimate sponsored/advertising links with the appropriate relationship attributes. Do not buy placements, send outreach, post to other sites or claim third-party endorsements without the relevant authorization. Link earning remains an external editorial outcome, not something a repository commit proves.

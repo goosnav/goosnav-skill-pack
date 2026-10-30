@@ -1,0 +1,11 @@
+{
+  "fictional": true,
+  "production_origin": "https://seo-fixture.example.invalid",
+  "public_indexable_paths": ["/", "/guide/"],
+  "private_paths": ["/dashboard/"],
+  "nonproduction_directory": "staging",
+  "deployment_headers_and_authentication": "Not supplied; no inference of actual deployed privacy or indexing.",
+  "intended_navigation": "The homepage guide link must lead to /guide/.",
+  "rendering": "Already complete static HTML; no framework or build step.",
+  "measurements": "No browser, field data or Search Console evidence supplied."
+}

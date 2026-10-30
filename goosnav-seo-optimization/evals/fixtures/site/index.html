@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fictional Preview Tool</title>
+<meta name="description" content="Preview sample text locally in this fictional tool.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://seo-fixture.example.invalid/">
+</head>
+<body>
+<h1>Fictional Preview Tool</h1>
+<p>This synthetic static site has a public guide and a deliberately private dashboard.</p>
+<nav><a href="/missing-guide/">Read the preview guide</a></nav>
+<label for="preview">Sample text</label><input id="preview">
+<p id="result" aria-live="polite"></p>
+<script>
+document.querySelector('#preview').addEventListener('input', (event) => {
+  document.querySelector('#result').textContent = event.target.value;
+});
+</script>
+</body>
+</html>

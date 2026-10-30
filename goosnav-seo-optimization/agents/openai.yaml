@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Optimization"
+  short_description: "Find and fix evidence-backed website SEO problems"
+  default_prompt: "Use $goosnav-seo-optimization to investigate my website's search visibility, fix applicable technical and on-page issues, and report verified changes and remaining owner actions."
+policy:
+  allow_implicit_invocation: true
